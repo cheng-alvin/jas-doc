@@ -40,13 +40,13 @@ to be written is 0, indicating a lack of requirement of writing.
 #include <stdint.h>
 
 int main(void) {
-    uint8_t my_array[] = {0xAB, 0xCD, 0xEF};
-    size_t array_size = sizeof(my_array);
+  uint8_t my_array[] = {0xAB, 0xCD, 0xEF};
+  size_t array_size = sizeof(my_array);
 
-    buffer_t buf = BUF_NULL;
-    buf_write(&buf, my_array, array_size);
+  buffer_t buf = BUF_NULL;
+  buf_write(&buf, my_array, array_size);
 
-    free(buf.data); // All done now.
+  free(buf.data); // All done now.
 
   return 0;
 }
