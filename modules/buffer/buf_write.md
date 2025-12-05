@@ -5,7 +5,6 @@ Function for writing a string of bytes to the specified buffer object
 structure with a length of a specified size. Where the supplied buffer
 object is unavailable and contains `NULL`, the function will allocate 
 a buffer memory field automatically.
-
 The buffer module itself does **not** provide any memory de-allocation
 functionalities and is of responsibility to the caller to clean-up 
 any memory leaks through the standard `free()` function.
@@ -40,7 +39,7 @@ to be written is 0, indicating a lack of requirement of writing.
 #include <stdint.h>
 
 int main(void) {
-    uint8_t my_array[] = {0xAB, 0xCD};
+    uint8_t my_array[] = {0xAB, 0xCD, 0xEF};
     size_t array_size = sizeof(my_array);
 
     buffer_t buf = BUF_NULL;
