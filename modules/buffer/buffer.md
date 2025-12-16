@@ -3,10 +3,9 @@
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
 Structure for representing the an automatically allocated data array with
-corresponding data information.
-This struct can be modified through through associated function throughout the
-`buffer` module, allowing for basic operations such as writing, removal of
-concatenation of bytes.
+corresponding data information. This struct can be modified through through
+associated function throughout the `buffer` module, allowing for basic
+operations such as writing, removal of concatenation of bytes.
 
 ### Synopsis
 

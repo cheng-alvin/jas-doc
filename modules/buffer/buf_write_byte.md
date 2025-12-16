@@ -4,9 +4,8 @@
 
 Function for writing a single byte to the specified `buffer_t` structure.
 Elevates redundant arguments in size when single-byte sized data is to be
-written into a Jas buffer.
-Under the hood, this function is simply used as a wrapper function which calls
-the `buf_write()` with size of `1`
+written into a Jas buffer. Under the hood, this function is simply used as a
+wrapper function which calls the `buf_write()` with size of `1`
 
 The buffer module itself does **not** provide any memory de-allocation
 functionalities and is of responsibility to the caller to clean-up any memory
