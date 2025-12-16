@@ -49,4 +49,4 @@ int main(void) {
 
 - [`buffer_t`]()
 
-- [`buf_write()`]()
+- [`buf_write()`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/buffer/buf_write.md)
