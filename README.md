@@ -7,18 +7,18 @@ corresponding source code that this documentation repository is based upon.
 
 ### 📋 Using the documentation
 
-The documentation is organised into directories, with each representing its own
+The documentation is organized into directories, with each representing its own
 distinctive modules.
 Within each module's directory, Markdown files document details including
-function signatures, and relavant information.
-Data structures and enumerated values are also documented where relavant in
+function signatures, and relevant information.
+Data structures and enumerated values are also documented where relevant in
 their respective module directories.
 
 Documentation is also provided within header files itself, in the source code's
 [`include/`](https://github.com/cheng-alvin/jas/tree/main/libjas/include)
 directory. Such documentation comments can be used as a *"quick reference"* and
 aids in integration of documentation with IDE or code editors, however, more
-detais would always be provided in this repository.
+details would always be provided in this repository.
 
 ### 📝 Licensing
 
