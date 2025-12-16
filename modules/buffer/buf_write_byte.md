@@ -47,6 +47,6 @@ int main(void) {
 
 ### See also
 
-- [`buffer_t`]()
+- [`buffer_t`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/buffer/buffer.md)
 
 - [`buf_write()`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/buffer/buf_write.md)
