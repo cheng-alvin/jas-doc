@@ -30,5 +30,6 @@ open-source license for projects like this! Please see
 *No warranty of any kind is provided, please double check official sources
 before deploying code to production*
 
-* * *
+______________________________________________________________________
+
 *Made with love by Alvin / the Jas crew and contributors ❤️ .*

@@ -7,10 +7,9 @@ corresponding data information. This struct can be modified through through
 associated function throughout the `buffer` module, allowing for basic
 operations such as writing, removal of concatenation of bytes.
 
-> [!NOTE]
-> There is no function to automatically deallocate and reset the `buffer_t`
-> structure, such operations to free the allocated `data` array from heap memory
-> must be done through the built in `free()` function against the `data` member.
+There is no function to automatically deallocate and reset the `buffer_t`
+structure, such operations to free the allocated `data` array from heap memory
+must be done through the built in `free()` function against the `data` member.
 
 ### Synopsis
 
@@ -24,11 +23,9 @@ typedef struct {
 ### Argument specifications
 
 - `data` - An array of byte-sized data
-
 - `len` - The number of bytes allocated towards the `data` array.
 
 ### See also
 
 - [`buf_write()`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/buffer/buf_write.md)
-
 - [`free()` from `stdlib.h`](https://www.tutorialspoint.com/c_standard_library/c_function_free.htm)

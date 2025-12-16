@@ -1,4 +1,4 @@
 all: $(shell find . -name "*.md") 
-		flowmark $^ -w 80 -i --nobackup
+		mdformat $^ --wrap 80
 
 .PHONY: all
