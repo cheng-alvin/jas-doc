@@ -2,10 +2,10 @@
 
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
-Function for writing a string of bytes to the specified buffer object 
-structure with a length of a specified size. Where the supplied buffer
-object is unavailable and contains `NULL`, the function will allocate 
-a buffer memory field automatically.
+Function for writing a string of bytes to the specified buffer object structure
+with a length of a specified size.
+Where the supplied buffer object is unavailable and contains `NULL`, the
+function will allocate a buffer memory field automatically.
 
 The buffer module itself does **not** provide any memory de-allocation
 functionalities and is of responsibility to the caller to clean-up any memory
