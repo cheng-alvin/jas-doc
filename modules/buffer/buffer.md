@@ -2,6 +2,11 @@
 
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
+Structure for representing the an automatically allocated data array with
+corresponding data information.
+This struct can be modified through through associated function throughout the
+`buffer` module, allowing for basic operations such as writing, removal of
+concatenation of bytes.
 
 ### Synopsis
 
@@ -14,25 +19,18 @@ typedef struct {
 
 ### Argument specifications
 
-`arg1` - Provide a simple description of the argument and expected inputs
+- `data` - An array of byte-sized data
 
-### Error handling
+- `len` - The number of bytes allocated towards the `data` array.
 
-Provide a description of how errors are handled
+### Note
 
-### Example
-
-```c
-#include <header.h>
-
-int main(void) {
-  int my_integer = 25;
-  function(my_integer);
-
-  return 0;
-}
-```
+There is no function to automatically deallocate and reset the `buffer_t`
+structure, such operations to free the allocated `data` array from heap memory
+must be done through the built in `free()` function against the `data` member.
 
 ### See also
 
-- https://www.example.com/
+- [`buf_write()`]()
+
+- [`free()` from `stdlib.h`](https://www.tutorialspoint.com/c_standard_library/c_function_free.htm)
