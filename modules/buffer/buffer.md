@@ -25,6 +25,12 @@ typedef struct {
 - `data` - An array of byte-sized data
 - `len` - The number of bytes allocated towards the `data` array.
 
+### Note - `BUF_NULL`
+
+It should also be noted that the helper macro `BUF_NULL` may also be used to
+statically initialize an empty buffer as a placeholder to guarantee a `NULL`
+pointer; and is sometimes used as an indication for an error in another process.
+
 ### See also
 
 - [`buf_write()`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/buffer/buf_write.md)
