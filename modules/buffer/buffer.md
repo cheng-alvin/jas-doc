@@ -23,7 +23,7 @@ typedef struct {
 ### Argument specifications
 
 - `data` - An array of byte-sized data
-  
+
 - `len` - The number of bytes allocated towards the `data` array.
 
 ### Note - `BUF_NULL`
