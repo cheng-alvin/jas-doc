@@ -47,14 +47,16 @@ directive types are updated and additions as well as modifications may exists
 periodically. The directives currently supported by the Jas assembler appear
 below:
 
-| `DIR_DEFINE_BYTES` | Similar to the `db` directive as seen in nasm, this
-directive allows the user to insert an array of bytes in the `buffer_t` format.
-Insertions made this way allows such data to be factored into internal
-calculations such as label offset evaluation and inclusion to section data
-generation in object files. | 
+- `DIR_DEFINE_BYTES` - Similar to the `db` directive as seen in nasm, this
+  directive allows the user to insert an array of bytes in the `buffer_t`
+  format. Insertions made this way allows such data to be factored into internal
+  calculations such as label offset evaluation and inclusion to section data
+  generation in object files.
 
-| `DIR_DEFINE_LABEL` | This directive defines and
-registers a label to the assembler and allows labels to be factored for external
-linkage and internal references of the ELF object. |
+- `DIR_DEFINE_LABEL` - This directive defines and registers a label to the
+  assembler and allows labels to be factored for external linkage and internal
+  references of the ELF object.
 
 ### See also
+
+- [`buffer_t`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/buffer/buffer.md)
