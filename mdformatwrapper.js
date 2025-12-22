@@ -1,8 +1,8 @@
 #! /bin/node
 
 // Defined constants for ignore/resume markers as shown:
-const ignoreMarker = '<!--> @mdformat pause </-->';
-const resumeMarker = '<!--> @mdformat resume </-->';
+const ignoreMarker = '<!-- @mdformat pause -->';
+const resumeMarker = '<!-- @mdformat resume -->';
 
 const options = '--wrap 80';  // Add additional supported options here.
 
