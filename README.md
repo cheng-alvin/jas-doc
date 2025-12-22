@@ -35,9 +35,10 @@ git clone https://github.com/cheng-alvin/jas-doc/
 
 All the code (including all documentation files) provided under the Jas
 assembler project licensed under the MIT license which is a popular open-source
-license for projects like this! Please see
-[LICENSE](https://github.com/cheng-alvin/jas/blob/main/LICENSE) from the main
-Jas repository for the details.
+license for projects like this! To obtain further details about the licensing
+requirements on all code in the Jas project, please see the main Jas source
+repository's [LICENSE](https://github.com/cheng-alvin/jas/blob/main/LICENSE)
+file.
 
 *No warranty of any kind is provided, please double check official sources
 before deploying code to production*
