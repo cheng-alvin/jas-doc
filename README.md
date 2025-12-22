@@ -18,7 +18,7 @@ Documentation is also provided within header files itself within the code's
 reference"* and specifically aids in integration of documentation with IDE or
 code editors, however, more details would always be provided in this repository.
 
-### Obtaining documentation
+### 📖 Obtaining documentation
 
 Since the entirety of the Jas documentation is written and actively maintained
 Markdown, The documentation can be viewed through the default Github file
