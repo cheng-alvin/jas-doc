@@ -14,7 +14,7 @@ instruction.
 Below is an exhaustive list of the available encoder options available to be
 used with the instruction encoder reference table.
 
-<!--> @mdformat pause </-->
+<!-- @mdformat pause -->
 
 | Value | Description |
 | ------ | ------------ |
@@ -25,7 +25,7 @@ used with the instruction encoder reference table.
 | `ENC_DEFAULT` | Encoder uses default encoding steps, without modifications. |
 | `ENC_OPCODE_APPEND` | Raw operand value is appended to the opcode. |
 
-<!--> @mdformat resume </-->
+<!-- @mdformat resume -->
 
 It should be noted that the `ENC_NULL` value has been manually set to pad the
 values from 0-7 values towards the usage for the representation of opcode
