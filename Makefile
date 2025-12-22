@@ -1,4 +1,4 @@
 all: $(shell find . -name "*.md") 
-		mdformat $^ --wrap 80
+		node ./mdformatwrapper.js $^
 
 .PHONY: all
