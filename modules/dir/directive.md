@@ -26,18 +26,17 @@ typedef struct directive {
   indicate which property is active within the union.
 
 The structure then organizes the payload of the directive in a union, with the
-effective data portion described by teh `dir` argument of the structure. See
-below or the specifics relating directive types
+effective data portion described by the `dir` argument of the structure. See the
+note section below or the specifics relating directive types.
 
-- `label` - Indicated by the `DIR_DEFINE_LABEL` value, this directive values
-  supplies the assembler with a marker of the sequential order and name of the
-  label, allowing for later references and offset evaluation in the encoder
-  process.
+- `label` - Active only when indicated by the `DIR_DEFINE_LABEL` value, this
+  directive values supplies the assembler with a marker of the sequential order
+  and name of the label, allowing for later references and offset evaluation in
+  the encoder process.
 
 - `data`- A custom buffer in the form of `buffer_t`, allowing for the addition
-  of custom data, or to facilitate padding etc. See
-  [`buffer_t`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/buffer/buffer.md)
-  for more information.
+  of custom data, or to facilitate padding etc. This union value is only
+  activated when the `dir` argument is set to `DIR_DEFINE_BYTES`.
 
 ### Directive types
 
