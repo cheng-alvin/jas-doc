@@ -15,6 +15,30 @@ conversion of serialized structures into a flat buffer array with little meta
 data. The terms *encoding* and *serialization* must **not** be used
 interchangeably, but should rather be treated as two distinct terms!
 
+### Synopsis
+
+```c
+typedef struct enc_serialized_instr {
+  buffer_t prefixes;
+  rex_t rex;
+
+  uint8_t opcode[3];
+  uint8_t opcode_size : 2;
+
+  struct op_modrm modrm;
+  struct op_sib sib;
+  bool has_modrm : 1;
+  bool has_sib : 1;
+
+  uint64_t disp; 
+  uint64_t imm;
+
+  uint8_t disp_size : 4;
+  uint8_t imm_size : 4; 
+
+} enc_serialized_instr_t;
+```
+
 ### Argument specifications
 
 Arguments in the instruction serialized structure can be categorized into 4
@@ -43,10 +67,16 @@ its properties in detail (such as size).
   the instruction encoder reference table.
 
 - `opcode_size` - The corresponding size definition of the `opcode` and defines
-  the number of bytes effective within the member's data range. Due to the
-  `opcode`'s limited range, this member must be a non-zero value with a maximum
-  of 3 and can be casted as a `uint8_t` type, despite its effective bit field of
-  3 bits long.
+  the number of bytes effective within the member's data range.
+
+<!-- @mdformat pause -->
+
+> ![NOTE]
+> Due to the `opcode`'s limited range, this member must be a non-zero value with
+> a maximum of 3 and can be casted as a `uint8_t` type, despite its effective
+> bit field of 3 bits long.
+
+<!-- @mdformat resume -->
 
 #### Memory definition
 
@@ -65,7 +95,7 @@ its properties in detail (such as size).
 - `has_sib` - Corresponding value for the applicability of the `sib` member of
   the serialized structure.
 
-### Immediate/displacement values
+#### Immediate/displacement values
 
 - `disp` - The following displacement value of the instruction. Where
   applicable, when using relative offsets such as section offsets, said values
@@ -73,14 +103,9 @@ its properties in detail (such as size).
 
 - `imm` - Representation of the immediate value effective of the instruction.
 
-<!-- @mdformat pause -->
-
-> [!NOTE] 
-> Please note that all multi-byte encoded values including the immediate
-> and displacement values should be encoded in **big endian** while serialized
-> and should only be converted to little endian in the final encoder buffer.
-
-<!-- @mdformat resume -->
+Please note that all multi-byte encoded values including the immediate and
+displacement values should be encoded in **big endian** while serialized and
+should only be converted to little endian in the final encoder buffer.
 
 - `disp_size` - The size of the displacement value ranging from 0 to 8 bytes.
   However, all x86 instruction have a limitation for a maximum of 4 bytes as an
@@ -92,7 +117,7 @@ its properties in detail (such as size).
 
 <!-- @mdformat pause -->
 
-> [!NOTE] 
+> [!NOTE]
 > It is worth noting that despite being able to represent a variety of
 > values, the x86 inherently only supports exclusively of the usage for data
 > that's *1, 2, 4, or 8 bytes* long. However, a data size of 0 is never allowed
