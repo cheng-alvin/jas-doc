@@ -67,16 +67,10 @@ its properties in detail (such as size).
   the instruction encoder reference table.
 
 - `opcode_size` - The corresponding size definition of the `opcode` and defines
-  the number of bytes effective within the member's data range.
-
-<!-- @mdformat pause -->
-
-> ![NOTE]
-> Due to the `opcode`'s limited range, this member must be a non-zero value with
-> a maximum of 3 and can be casted as a `uint8_t` type, despite its effective
-> bit field of 3 bits long.
-
-<!-- @mdformat resume -->
+  the number of bytes effective within the member's data range. Due to the
+  `opcode`'s limited range, this member must be a non-zero value with a maximum
+  of 3 and can be casted as a `uint8_t` type, despite its effective bit field of
+  3 bits long.
 
 #### Memory definition
 
@@ -103,9 +97,14 @@ its properties in detail (such as size).
 
 - `imm` - Representation of the immediate value effective of the instruction.
 
-Please note that all multi-byte encoded values including the immediate and
-displacement values should be encoded in **big endian** while serialized and
-should only be converted to little endian in the final encoder buffer.
+<!-- @mdformat pause -->
+
+> [!NOTE]
+> Please note that all multi-byte encoded values including the immediate and
+> displacement values should be encoded in **big endian** while serialized and
+> should only be converted to little endian in the final encoder buffer.
+
+<!-- @mdformat resume -->
 
 - `disp_size` - The size of the displacement value ranging from 0 to 8 bytes.
   However, all x86 instruction have a limitation for a maximum of 4 bytes as an
