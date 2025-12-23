@@ -24,7 +24,7 @@ functionality and description.
 | `ENC_RM` | Assigns memory reference operand to `rm` field of the ModR/M byte. |
 | `ENC_IGNORE` | Ignores current operand by skipping encoding steps for this operand. |
 | `ENC_DEFAULT` | Encoder uses default encoding steps as assumed. |
-| `ENC_OPCODE_APPEND` | Raw operand value is appended through addition. |
+| `ENC_OPCODE_APPEND` | Raw operand value is appended through addition to the opcode. |
 
 <!-- @mdformat resume -->
 
