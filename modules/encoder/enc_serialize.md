@@ -10,7 +10,7 @@
 > used for guidance and facilitate the encoding of instructions independent of
 > Jas assembler components.
 
-<!-- @mdformat resume  -->
+<!-- @mdformat resume -->
 
 Function facilitating the serialization of generic instruction inputs into an
 intermediate encoder representation in the form of the `enc_serialized_instr`

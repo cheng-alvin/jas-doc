@@ -20,9 +20,7 @@ void buf_write_byte(buffer_t *buf, const uint8_t data);
 
 ### Argument specifications
 
-- `buf` - Pointer to the target `buffer_t` object for the operation to be
-  applied towards.
-
+- `buf` - Pointer to the target `buffer_t` to be applied against.
 - `data` - A single byte value to be written into the `buffer_t` object.
 
 ### Error handling

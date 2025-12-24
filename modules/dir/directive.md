@@ -5,7 +5,7 @@ includes non-instruction inputs such as label definitions and manual writes
 using the `buffer_t` structure. Such data inputs are factored into the assembly
 process but are to be processed separate from typical instructions.
 
-\[Add reference to `instr_generic_t`, and `label_t`\]
+Contrary to the `instruction_t`, `directive_t`
 
 ### Synopsis
 
@@ -22,8 +22,10 @@ typedef struct directive {
 
 ### Argument specifications
 
-- `dir` - Specifies the type of directive, said value is used as a label to
-  indicate which property is active within the union.
+- `dir` - Specifies the type of directive and can be set to either
+  `DIR_DEFINE_LABEL` or `DIR_DEFINE_BYTES`, corresponding to engage the `label`
+  or `data` fields of the enum value respectively. More details regarding said
+  fields can be obtained in the description below:
 
 The structure then organizes the payload of the directive in a union, with the
 effective data portion described by the `dir` argument of the structure. See the

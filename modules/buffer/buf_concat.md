@@ -24,9 +24,8 @@ void buf_concat(buffer_t *buf, size_t count, ...);
   bounds of provided variadic arguments and the arguments' identity.
 
 - `...` - Variadic arguments, represents a list of `buffer_t` structs to be
-  appended to the main `buf` buffer. Conditions that apply to the
-  [`buf_write`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/buffer/buf_write.md)
-  function applies to this function too.
+  appended to the main `buf` buffer. Conditions and validation check that apply
+  to `buf_write` may also apply to `buf_concat` due to its dependence.
 
 ### Example
 
