@@ -2,6 +2,16 @@
 
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
+<!-- @mdformat pause -->
+
+> [!NOTE]
+> `enc_serialize` is typically used within internal logic of the assembler,
+> particularly within code generation steps. However, this function can still be
+> used for guidance and facilitate the encoding of instructions independent of
+> Jas assembler components.
+
+<!-- @mdformat resume  -->
+
 Function facilitating the serialization of generic instruction inputs into an
 intermediate encoder representation in the form of the `enc_serialized_instr`
 structure. The representations of the instructions in the serialized form
