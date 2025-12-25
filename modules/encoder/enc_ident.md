@@ -10,6 +10,13 @@ for the modification of instruction encoding as a whole; encoder identities
 apply changes on individual operands themselves and should only be used to
 modify the encoding properties of single operands, **not entire instructions**!
 
+### Synopsis
+
+```c
+#include <encoder.h>
+enum enc_ident;
+```
+
 ### Available options
 
 Below is list of the available encoder options available to be used with the
