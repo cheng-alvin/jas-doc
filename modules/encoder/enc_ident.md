@@ -15,7 +15,8 @@ modify the encoding properties of single operands, **not entire instructions**!
 Below is list of the available encoder options available to be used with the
 instruction encoder reference table with its corresponding functionality and
 description. This list is by no mean exhaustive and additions and removals may
-occur against listed encoder options.
+occur against listed encoder options, however, effort will be taken to ensure 
+the accuracy of the list presented below:
 
 <!-- @mdformat pause -->
 
