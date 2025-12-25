@@ -8,7 +8,7 @@ de-allocation on the heap is NOT provided by said function and assumes provided
 buffers are to be preserved for de-allocation by the caller where deemed
 appropriate.
 
-## Synopsis
+### Synopsis
 
 ```c
 #include <buffer.h>
