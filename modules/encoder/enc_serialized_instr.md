@@ -18,9 +18,9 @@ interchangeably, but should rather be treated as two distinct terms!
 ### Argument specifications
 
 Arguments in the instruction serialized structure can be categorized into:
-*prefixe*, *opcode*, *memory definition* and *immediate/displacement values*
+*prefix*, *opcode*, *memory definition* and *immediate/displacement values*
 along with its corresponding metadata describing its properties in detail (such
-as size). It should be noted that bitfields are used in attampts to reduce the
+as size). It should be noted that bit fields are used in attempts to reduce the
 size of the structure, to prevent the overflow of data from the data size,
 callers should follow limitations as set by the argument specifications.
 
