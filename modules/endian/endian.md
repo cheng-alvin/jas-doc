@@ -2,6 +2,16 @@
 
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
+<!-- @mdformat pause -->
+
+> [!WARNING]
+> Generically named header of `endian.h` may conflict with the system-default
+> `endian.h` header declarations available on `glibc` on some systems, but
+> excludes MacOS. Care should be taken to ensure correct header has been
+> included!
+
+<!-- @mdformat resume -->
+
 Function for facilitating the conversion between opposite endian formats. Due to
 Intel's extensive usage of encoding bytes in *little endian*. The `endian`
 function is primary used for conversion of input bytes expressed in big endian
