@@ -1,4 +1,4 @@
 all: $(shell find . -name "*.md") 
-		node ./mdformatwrapper.js $^
+		@node ./mdformatwrapper.js $^
 
 .PHONY: all
