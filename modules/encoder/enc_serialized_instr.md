@@ -84,11 +84,16 @@ callers should follow limitations as set by the argument specifications.
   applicable, when using relative offsets such as section offsets, said values
   would be written in this member, rather than the `imm` (immediate value)
 
-> [!NOTE] It is worth noting that despite being able to represent a variety of
+<!-- @mdformat pause -->
+
+> [!NOTE]
+> It is worth noting that despite being able to represent a variety of
 > values, the x86 inherently only supports exclusively of the usage for data
 > that's *1, 2, 4, or 8 bytes* long. However, a data size of 0 is never allowed
 > in instruction encoding, but is rather used as an indicator for the *lack* of
 > immediate/displacement values instead.
+
+<!-- @mdformat resume -->
 
 - `disp_size` & `imm_size` - The size of the displacement and immediate values
   ranging from 0 to 8 bytes, respectively. However, all x86 instruction have a
