@@ -15,36 +15,14 @@ conversion of serialized structures into a flat buffer array with little meta
 data. The terms *encoding* and *serialization* must **not** be used
 interchangeably, but should rather be treated as two distinct terms!
 
-### Synopsis
-
-```c
-typedef struct enc_serialized_instr {
-  buffer_t prefixes;
-  rex_t rex;
-
-  uint8_t opcode[3];
-  uint8_t opcode_size : 2;
-
-  struct op_modrm modrm;
-  struct op_sib sib;
-  bool has_modrm : 1;
-  bool has_sib : 1;
-
-  uint64_t disp; 
-  uint64_t imm;
-
-  uint8_t disp_size : 4;
-  uint8_t imm_size : 4; 
-
-} enc_serialized_instr_t;
-```
-
 ### Argument specifications
 
-Arguments in the instruction serialized structure can be categorized into 4
-distinct segments: the *prefixes*, *opcode*, *memory definition* and
-*immediate/displacement values* along with its corresponding metadata describing
-its properties in detail (such as size).
+Arguments in the instruction serialized structure can be categorized into:
+*prefixe*, *opcode*, *memory definition* and *immediate/displacement values*
+along with its corresponding metadata describing its properties in detail (such
+as size). It should be noted that bitfields are used in attampts to reduce the
+size of the structure, to prevent the overflow of data from the data size,
+callers should follow limitations as set by the argument specifications.
 
 #### Prefix
 
@@ -54,10 +32,19 @@ its properties in detail (such as size).
   instead.
 
 - `rex` - Contains and single byte REX prefix and can be modified accordingly
-  using supplied helpers in the rex module. The `rex` prefix member should be
-  set to `REX_DEFAULT` by default to indicate a lack of REX prefix and uses said
-  condition to determine whether the prefix should be appended into the final
-  encoder result.
+  using supplied helpers in the rex module.
+
+<!-- @mdformat pause -->
+
+> [!NOTE]
+> The `rex` prefix member should be set to `REX_DEFAULT` by default to indicate
+> a lack of REX prefix and uses said condition to determine whether the prefix
+> should be appended into the final encoder result. Setting this value with
+> `NULL`, or `0` as a placeholder is discouraged. However where applicable, the
+> `ENC_SERIALIZED_NULL` placeholder macro should be used to represent an empty
+> serialized instruction instead.
+
+<!-- @mdformat resume -->
 
 #### Opcode
 
@@ -78,52 +65,36 @@ its properties in detail (such as size).
   form.
 
 - `sib` - SIB byte value supported by the ModR/M byte, despite having the SIB
-  byte being activated, by the ModR/M byte's R/M field in actual encoding, the
+  byte being activated by the ModR/M byte's R/M field in actual encoding, the
   serialized structure does not take such conditions into account, but rather
-  relies on boolean values to determine its validity.
+  relies on boolean values to determine its validity. Such approach allows for a
+  higher degree of flexibility in the assembler and allows for the manual
+  override of the inter dependence between the `modrm` and `sib` values.
 
-- `has_modrm` - Boolean value for determining wether the instruction uses the
-  ModR/M byte. Controls if the instruction will encode the provided `modrm` byte
-  into the produced encoded buffer.
-
-- `has_sib` - Corresponding value for the applicability of the `sib` member of
-  the serialized structure.
+- `has_modrm` & `has_sib`- A set of boolean values for determining wether the
+  instruction uses the ModR/M byte and SIB bytes respectively. Controls if the
+  instruction will encode the provided `modrm` and `sib` members as shown above
+  into the final encoded buffer.
 
 #### Immediate/displacement values
+
+- `imm` - Representation of the immediate value effective of the instruction.
 
 - `disp` - The following displacement value of the instruction. Where
   applicable, when using relative offsets such as section offsets, said values
   would be written in this member, rather than the `imm` (immediate value)
 
-- `imm` - Representation of the immediate value effective of the instruction.
-
-<!-- @mdformat pause -->
-
-> [!NOTE]
-> Please note that all multi-byte encoded values including the immediate and
-> displacement values should be encoded in **big endian** while serialized and
-> should only be converted to little endian in the final encoder buffer.
-
-<!-- @mdformat resume -->
-
-- `disp_size` - The size of the displacement value ranging from 0 to 8 bytes.
-  However, all x86 instruction have a limitation for a maximum of 4 bytes as an
-  offset, with only select instructions in select instruction set extensions
-  actually utilizing the full 8 byte limit.
-
-- `imm_size` - Depicts the size of the immediate value with a maximum of 8
-  bytes, dependent on operational mode.
-
-<!-- @mdformat pause -->
-
-> [!NOTE]
-> It is worth noting that despite being able to represent a variety of
+> [!NOTE] It is worth noting that despite being able to represent a variety of
 > values, the x86 inherently only supports exclusively of the usage for data
 > that's *1, 2, 4, or 8 bytes* long. However, a data size of 0 is never allowed
 > in instruction encoding, but is rather used as an indicator for the *lack* of
 > immediate/displacement values instead.
 
-<!-- @mdformat resume -->
+- `disp_size` & `imm_size` - The size of the displacement and immediate values
+  ranging from 0 to 8 bytes, respectively. However, all x86 instruction have a
+  limitation for a maximum of 4 bytes as both an offset and immediate values,
+  with only select instructions in select instruction set extensions actually
+  utilizing this full 8 byte limit. This should be written in **big endian**
 
 ### Why `enc_serialized_instr`?
 
