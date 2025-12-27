@@ -46,7 +46,9 @@ uint8_t *endian(uint8_t *data, size_t data_size);
 Validation of size is not conducted in `endian`, the `data` argument is assumed
 to be an accessible memory address containing the pre-stated array. **NO** error
 checking or validation is provided by `endian` to check the validity of the
-parameters.
+parameters. However, where the `data_size` specification is accurate, a static
+array allocation can also be used in spite of an perceived inherent requirement
+for a heap allocation associated with `uint8_t *`
 
 ### See also
 
