@@ -9,8 +9,7 @@
 > `endian.h` header declarations available on `glibc` on some systems, but
 > excludes MacOS. Care should be taken to ensure correct header has been
 > included! More information/justification of said practice is provided in
-> [this](https://github.com/cheng-alvin/jas-doc/blob/main/modules/endian/endian.md#why-not-just-use-the-standard-endianh-or-osbyteorderh)
-> section.
+> [this](https://shorturl.at/XC1rg) section as presented below.
 
 <!-- @mdformat resume -->
 
