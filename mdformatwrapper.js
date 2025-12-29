@@ -78,6 +78,7 @@ function findIgnoreRegions(text) {
     regions.push({
       start: startIndex,
       end: endIndex,
+      text: text.slice(startIndex, endIndex),
     });
   }
   return regions;
