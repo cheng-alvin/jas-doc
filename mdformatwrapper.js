@@ -72,15 +72,14 @@ function findIgnoreRegions(text) {
 
   const regions = [];
   for (let i = 0; i < ignorePositions.length; i++) {
-    const end = resumePositions[i] + resumeMarker.length;
+    const startIndex = ignorePositions[i] + ignoreMarker.length;
+    const endIndex = resumePositions[i];
 
     regions.push({
-      start: ignorePositions[i],
-      end: end,
-      text: text.slice(ignorePositions[i], end),
+      start: startIndex,
+      end: endIndex,
     });
   }
-
   return regions;
 }
 
@@ -95,17 +94,18 @@ for (let i = 2; i < process.argv.length; i++) {
     continue;
   }
 
-  for (let j = 1; j < ignoreRegions.length; j++) {
+  for (let j = ignoreRegions.length - 1; j >= 0; j--) {
     fileText = fileText.slice(0, ignoreRegions[j].start) +
         fileText.slice(ignoreRegions[j].end);
   }
 
+  fs.writeFileSync(filePath, fileText);
   execSync(`mdformat "${filePath}" ${options || ''}`);
 
   let updatedFileText = fs.readFileSync(filePath, 'utf8');
   const updatedRegions = findIgnoreRegions(updatedFileText);
 
-  for (let j = ignoreRegions.length - 1; j >= 0; j--) {
+  for (let j = updatedRegions.length - 1; j >= 0; j--) {
     updatedFileText = updatedFileText.slice(0, updatedRegions[j].start) +
         ignoreRegions[j].text + updatedFileText.slice(updatedRegions[j].end);
   }
