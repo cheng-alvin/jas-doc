@@ -84,26 +84,39 @@ function findIgnoreRegions(text) {
   return regions;
 }
 
+function replaceCalloutsToIgnore(text) {
+  const noteRegex = /^>\s?\[!(.*?)\]/gm;
+
+  return text.replaceAll(noteRegex, (_, p1) => {
+    console.log(p1)
+    return `<!-- @mdformat note ${p1} -->`;
+  });
+}
+
+function recoverCalloutsFromIgnore(text) {
+  const ignoreNoteRegex = /<!-- @mdformat note (.*?) -->\n/gm;
+  return text.replaceAll(ignoreNoteRegex, (_, p1) => {
+    return `> [!${p1}]`;
+  });
+}
+
 for (let i = 2; i < process.argv.length; i++) {
   const filePath = process.argv[i];
   let fileText = fs.readFileSync(filePath, 'utf8');
 
   const ignoreRegions = findIgnoreRegions(fileText);
 
-  if (ignoreRegions.length === 0) {
-    execSync(`mdformat "${filePath}" ${options || ''}`);
-    continue;
-  }
-
   for (let j = ignoreRegions.length - 1; j >= 0; j--) {
     fileText = fileText.slice(0, ignoreRegions[j].start) +
         fileText.slice(ignoreRegions[j].end);
   }
 
+  fileText = replaceCalloutsToIgnore(fileText);
   fs.writeFileSync(filePath, fileText);
   execSync(`mdformat "${filePath}" ${options || ''}`);
 
   let updatedFileText = fs.readFileSync(filePath, 'utf8');
+  updatedFileText = recoverCalloutsFromIgnore(updatedFileText);
   const updatedRegions = findIgnoreRegions(updatedFileText);
 
   for (let j = updatedRegions.length - 1; j >= 0; j--) {
