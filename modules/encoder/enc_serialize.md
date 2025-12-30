@@ -65,6 +65,6 @@ set by the caller.
 
 - [`enc_serialized_instr`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/encoder/enc_serialised_instr.md)
 - [`instr_generic_t`](<>)
-- [`modes`](<>)
+- [`modes`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/mode/modes.md)
 - [`err`](<>)
 - [`instr_encode_table_t`](<>)
