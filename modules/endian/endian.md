@@ -2,8 +2,6 @@
 
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
-<!-- @mdformat pause -->
-
 > [!WARNING]
 > Generically named header of `endian.h` may conflict with the system-default
 > `endian.h` header declarations available on `glibc` on some systems, but
@@ -11,15 +9,11 @@
 > included! More information/justification of said practice is provided in
 > [this](https://shorturl.at/XC1rg) section as presented below.
 
-<!-- @mdformat resume -->
-
 Function for facilitating the conversion between opposite endian formats. Due to
 Intel's extensive usage of encoding bytes in *little endian*. The `endian`
 function is primary used for conversion of input bytes expressed in big endian
 to encoded data represented in little endian, in adherence to Intel x86's
 encoder conventions.
-
-<!-- @mdformat pause -->
 
 > [!NOTE]
 > `endian` is pragmatically conditioned to only be applicable where the
@@ -27,8 +21,6 @@ encoder conventions.
 > approach ensures correct values to be preserved when assembler functions are
 > executed on big endian machines. This behavior is achieved through the
 > conditional compilation based off the built in `__LITTLE_ENDIAN__` flag.
-
-<!-- @mdformat resume -->
 
 ### Synopsis
 
@@ -51,15 +43,11 @@ parameters. However, where the `data_size` specification is accurate, a static
 array allocation can also be used in spite of an perceived inherent requirement
 for a heap allocation associated with `uint8_t *`
 
-<!-- @mdformat pause -->
-
 > [!TIP]
 > Where it is required to convert a `buffer_t`'s endian-ness, the buffer's
 > properties can be passed in directly. The `data` and `data_size` argument can
 > be assigned as the `buffer_t`'s `data` and `len` properties, respectively. The
 > final return value can also be *re-assigned back to the `data` member*.
-
-<!-- @mdformat resume -->
 
 ### Why not just use the standard `endian.h`, or `OSByteOrder.h`?
 

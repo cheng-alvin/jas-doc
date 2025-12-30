@@ -34,8 +34,6 @@ callers should follow limitations as set by the argument specifications.
 - `rex` - Contains and single byte REX prefix and can be modified accordingly
   using supplied helpers in the rex module.
 
-<!-- @mdformat pause -->
-
 > [!NOTE]
 > The `rex` prefix member should be set to `REX_DEFAULT` by default to indicate
 > a lack of REX prefix and uses said condition to determine whether the prefix
@@ -43,8 +41,6 @@ callers should follow limitations as set by the argument specifications.
 > `NULL`, or `0` as a placeholder is discouraged. However where applicable, the
 > `ENC_SERIALIZED_NULL` placeholder macro should be used to represent an empty
 > serialized instruction instead.
-
-<!-- @mdformat resume -->
 
 #### Opcode
 
@@ -84,16 +80,12 @@ callers should follow limitations as set by the argument specifications.
   applicable, when using relative offsets such as section offsets, said values
   would be written in this member, rather than the `imm` (immediate value)
 
-<!-- @mdformat pause -->
-
 > [!NOTE]
-> It is worth noting that despite being able to represent a variety of
-> values, the x86 inherently only supports exclusively of the usage for data
-> that's *1, 2, 4, or 8 bytes* long. However, a data size of 0 is never allowed
-> in instruction encoding, but is rather used as an indicator for the *lack* of
+> It is worth noting that despite being able to represent a variety of values,
+> the x86 inherently only supports exclusively of the usage for data that's *1,
+> 2, 4, or 8 bytes* long. However, a data size of 0 is never allowed in
+> instruction encoding, but is rather used as an indicator for the *lack* of
 > immediate/displacement values instead.
-
-<!-- @mdformat resume -->
 
 - `disp_size` & `imm_size` - The size of the displacement and immediate values
   ranging from 0 to 8 bytes, respectively. However, all x86 instruction have a

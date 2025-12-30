@@ -2,15 +2,11 @@
 
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
-<!-- @mdformat pause -->
-
 > [!NOTE]
 > `enc_serialize` is typically used within internal logic of the assembler,
 > particularly within code generation steps. However, this function can still be
 > used for guidance and facilitate the encoding of instructions independent of
 > Jas assembler components.
-
-<!-- @mdformat resume -->
 
 Function facilitating the serialization of generic instruction inputs into an
 intermediate encoder representation in the form of the `enc_serialized_instr`
@@ -43,16 +39,12 @@ validity of encoding identities across different modes and ultimately exerts
 wether the instruction is valid. Error checking in the `enc_serialize` function
 can be classified into the following categories:
 
-<!-- @mdformat pause -->
-
 > [!NOTE]
 > Where a fatal error condition has been met, `enc_serialize` will immediately
 > seize the current process, terminating with a `NULL` pointer value. If the
 > instruction generic is provided with a `DIRECTIVE` type, or have a `NULL`'ed
 > pointer provided, serialization will **not** occur and will immediately
 > terminate.
-
-<!-- @mdformat resume -->
 
 - **Mismatch of modes** - Where the provided `mode` parameter fails match with
   either the `long_mode`, or `leg_mode` members in 64-bit long mode or 16-bit

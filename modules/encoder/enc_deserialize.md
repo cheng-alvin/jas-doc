@@ -7,8 +7,6 @@ converting an intermediate `enc_serialized_instr_t` struct is considered
 instruction generic input into a serialized struct. See `enc_serialized_instr_t`
 for more details.
 
-<!-- @mdformat pause -->
-
 > [!NOTE]
 > `enc_deserialize` should only be used as the *final* step of assembly. Any
 > processing of encoded instructions such as label evaluation and symbol table
@@ -16,8 +14,6 @@ for more details.
 > approach provides guaranteed structure, supporting external amendments. It is
 > also recommended that processing done by the caller also interact with
 > `enc_serialized_instr_t` instead.
-
-<!-- @mdformat resume -->
 
 ### Synopsis
 
