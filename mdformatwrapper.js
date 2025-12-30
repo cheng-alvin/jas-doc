@@ -88,7 +88,6 @@ function replaceCalloutsToIgnore(text) {
   const noteRegex = /^>\s?\[!(.*?)\]/gm;
 
   return text.replaceAll(noteRegex, (_, p1) => {
-    console.log(p1)
     return `<!-- @mdformat note ${p1} -->`;
   });
 }
