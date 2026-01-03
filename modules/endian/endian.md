@@ -15,15 +15,6 @@ function is primary used for conversion of input bytes expressed in big endian
 to encoded data represented in little endian, in adherence to Intel x86's
 encoder conventions.
 
-> [!NOTE]
-> `endian` is pragmatically conditioned to only be applicable where the
-> assembler source code has been compiled on machine using little endian. This
-> approach ensures correct values to be preserved when assembler functions are
-> executed on big endian machines. This behavior is achieved through the
-> conditional compilation based off the built in `__LITTLE_ENDIAN__` flag. If
-> not using `clang` as the primary compiler, you must check for support of this
-> macro.
-
 ### Synopsis
 
 ```c
@@ -43,7 +34,7 @@ to be an accessible memory address containing the pre-stated array. **NO** error
 checking or validation is provided by `endian` to check the validity of the
 parameters. However, where the `data_size` specification is accurate, a static
 array allocation can also be used in spite of an perceived inherent requirement
-for a heap allocation associated with `uint8_t *`
+for a heap allocation associated with `uint8_t *`.
 
 > [!TIP]
 > Where it is required to convert a `buffer_t`'s endian-ness, the buffer's
@@ -62,6 +53,14 @@ respectively, despite `endian.h`'s listing in the Glibc standard.
 Crucially, traditionally used macros typically have a limit of 8 bytes across
 the board and is unable to accommodate Jas' required data sizes/formats; namely
 the interop with the Jas `buffer_t` structures and continuous arrays etc.
+
+### Implementation details
+
+`endian` is pragmatically conditioned to only be applicable where the assembler
+source code has been compiled on machine using little endian. This behavior is
+achieved through the conditional compilation based off the built in
+`__LITTLE_ENDIAN__` flag which some compilers **does not** support. Please
+ensure that this feature is supported before compilation of Jas.
 
 ### See also
 

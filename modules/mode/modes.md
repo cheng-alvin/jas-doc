@@ -5,7 +5,7 @@ the Jas assembler as an argument indicative of the mode such code should be
 compiled into. Due to encoder differences and instruction set variations across
 operating modes, the usage of such enum allows the Jas assembler to provide
 error reporting functionality by detecting invalid modes of encoding, and
-accounts for encoding optimizations for specific modes where applicable.
+provide mode-specific optimization settings.
 
 ### Synopsis
 
