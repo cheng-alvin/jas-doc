@@ -20,7 +20,9 @@ encoder conventions.
 > assembler source code has been compiled on machine using little endian. This
 > approach ensures correct values to be preserved when assembler functions are
 > executed on big endian machines. This behavior is achieved through the
-> conditional compilation based off the built in `__LITTLE_ENDIAN__` flag.
+> conditional compilation based off the built in `__LITTLE_ENDIAN__` flag. If
+> not using `clang` as the primary compiler, you must check for support of this
+> macro.
 
 ### Synopsis
 
