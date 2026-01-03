@@ -1,5 +1,7 @@
 ## `modes`
 
+**Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
+
 Enum representing the Intel machine operating modes and is typically used within
 the Jas assembler as an argument indicative of the mode such code should be
 compiled into. Due to encoder differences and instruction set variations across
