@@ -29,9 +29,10 @@ bool reg_needs_rex(enum registers input);
 
 `reg_needs_rex` only filters for a select list of registers that requires the
 register extension value. This means, the function's return value would always
-default to `false`, even if the register enum is non existent, or invalid. However, invalid data is not checked against, and cannot be indicated back.
+default to `false`, even if the register enum is non existent, or invalid.
+However, invalid data is not checked against, and cannot be indicated back.
 
 ### See also
 
-- [`enum registers`](<>)
+- [`enum registers`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/register/registers.md)
 - [Jas' REX module](https://github.com/cheng-alvin/jas-doc/tree/main/modules/rex)
