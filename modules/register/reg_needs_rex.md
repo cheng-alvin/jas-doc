@@ -12,7 +12,8 @@ returning a boolean value for the requirement of the REX prefix.
 > Register extension prefixes (REX) can be manipulated using the dedicated REX
 > module, and associated functions. `reg_needs_rex` is only an indicative value
 > and does not take into account of the specifics such as the type of REX
-> prefix, check `rex_t` and associated headers for specifics.
+> prefix, check `rex_t` and associated headers for specifics. However, despite
+> the fact, `reg_needs_rex` never writes a REX prefix byte.
 
 ### Synopsis
 
