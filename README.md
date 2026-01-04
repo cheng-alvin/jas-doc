@@ -5,33 +5,12 @@ source code is stored here in this repository, please visit the main repository
 [here](https://github.com/cheng-alvin/jas) for the complete corresponding source
 code that this documentation repository is based upon.
 
-- [Buffer](/main/modules/buffer)
-  - [`buf_concat`](/modules/buffer/buf_concat.md)
-  - [`buf_element_exists`](/modules/buffer/buf_element_exists.md)
-  - [`buf_remove`](/modules/buffer/buf_remove.md)
-  - [`buf_write`](/modules/buffer/buf_write.md)
-  - [`buf_write_byte`](/modules/buffer/buf_write_byte.md)
-  - [`buffer_t`](/modules/buffer/buffer_t.md)
-- [Directives](/main/modules/dir)
-  - [`directive_t`](/modules/dir/directive_t.md)
-- [Encoder](/main/modules/encoder)
-  - [`enc_deserialize`](/modules/encoder/enc_deserialize.md)
-  - [`enc_ident`](/modules/encoder/enc_ident.md)
-  - [`enc_serialize`](/modules/encoder/enc_serialize.md)
-  - [`enc_serialized_instr`](/modules/encoder/enc_serialized_instr.md)
-- [Endian](/main/modules/endian)
-  - [`endian`](/modules/endian/endian.md)
-- [Mode](/main/modules/mode)
-  - [`modes`](/modules/mode/modes.md)
-- [Register](/main/modules/register)
-  - [`reg_lookup_val`](/modules/register/reg_lookup_val.md)
-  - [`reg_needs_rex`](/modules/register/reg_needs_rex.md)
-  - [`registers`](/modules/register/registers.md)
-- [REX](/main/modules/rex)
-  - [`rex_t`](/modules/rex/rex_t.md)
-  - [`rex_apply`](/modules/rex/rex_apply.md)
-- [Parse](/main/modules/parse)
-  - [`parse_instr_name`, `parse_str_num`, `parse_reg`](/modules/parse/parse.md)
+> [!NOTE]
+> The Jas assembler documentation should *not* be treated as a guide in writing,
+> or reading x86 assembly code, or C. For details regarding the specifics of the
+> Intel architecture, please consult actual Intel endorsed or published sources
+> such as the [Intel Software Developers' Manual](https://shorturl.at/NaWVY)
+> published on the Intel developer website.
 
 ### 📋 Using the documentation
 
@@ -49,9 +28,10 @@ code editors, however, more details would always be provided in this repository.
 ### 📖 Obtaining documentation
 
 Since the entirety of the Jas documentation is written and actively maintained
-Markdown, The documentation can be viewed through the default Github file
+Markdown. The documentation can be viewed through the default Github file
 explorer, or any other supported applications. The documentation files may be
-obtained locally by pulling the current repository through:
+obtained locally and viewed in your text editor/viewer of choice by pulling the
+current repository through:
 
 ```sh
 git clone https://github.com/cheng-alvin/jas-doc/
