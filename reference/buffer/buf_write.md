@@ -59,4 +59,4 @@ int main(void) {
 
 ### See also
 
-- [`buffer_t`](buffer/buffer.md)
+- [`buffer_t`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/buffer/buffer.md)

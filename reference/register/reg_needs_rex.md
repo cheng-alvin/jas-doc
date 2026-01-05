@@ -35,5 +35,5 @@ However, invalid data is not checked against, and cannot be indicated back.
 
 ### See also
 
-- [`enum registers`](register/registers.md)
+- [`enum registers`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/register/registers.md)
 - [Jas' REX module](https://github.com/cheng-alvin/jas-doc/tree/main/modules/rex)
