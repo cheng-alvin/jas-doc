@@ -29,4 +29,4 @@ placeholder value and *should not* be considered a register.
 
 ### See also
 
-- [`reg_lookup_val`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/register/reg_lookup_val.md)
+- [`reg_lookup_val`](register/reg_lookup_val.md)
