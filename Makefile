@@ -2,6 +2,7 @@
 CONFIG_PATH	     ?=	$(abspath .)
 SCRIPT           := $(abspath ./scripts)
 
+all: format $(CONFIG_PATH)/mkdocs.yml 
 format: $(shell find . -name "*.md") 	
 	@node  $(SCRIPT)/mdformatwrapper.js $^
 
@@ -10,5 +11,4 @@ $(CONFIG_PATH)/mkdocs.yml: $(SCRIPT)/sidebarbuilder.js
 	cat $(CONFIG_PATH)/config.yml nav.txt > $@
 	@rm -rf nav.txt
 
-all: format $(CONFIG_PATH)/mkdocs.yml 
 .PHONY: all format
