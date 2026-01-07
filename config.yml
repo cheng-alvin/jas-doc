@@ -1,4 +1,5 @@
 site_name: Jas Documentation
+logo: img/logo.png
 
 docs_dir: reference
 theme:
