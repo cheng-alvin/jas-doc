@@ -64,5 +64,5 @@ ensure that this feature is supported before compilation of Jas.
 
 ### See also
 
-- [`buffer_t`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/buffer/buffer.md)
+- [`buffer_t`](/reference/buffer/buffer_t.md)
 - [Endianness - Wikipedia](https://en.wikipedia.org/wiki/Endianness)

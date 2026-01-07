@@ -40,6 +40,6 @@ Regardless of success of the intended operations, `rex_apply` returns
 ### See also
 
 - [Intel REX prefixes](https://en.wikipedia.org/wiki/REX_prefix)
-- [`rex_t`](<>)
+- [`rex_t`](/reference/rex/rex_t.md)
 - [`instruction_t`](<>)
 - [`instr_get_tab`](<>)

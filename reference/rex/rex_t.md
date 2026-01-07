@@ -32,4 +32,4 @@ reflecting Intel proposed prefixes.
 ### See also
 
 - [Intel REX prefixes](https://en.wikipedia.org/wiki/REX_prefix)
-- [`rex_apply`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/rex/rex_apply.md)
+- [`rex_apply`](/reference/rex/rex_apply.md)

@@ -61,6 +61,6 @@ should handle errors originating from operating system calls accordingly using
 
 ### See also
 
-- [`enum registers`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/register/registers.md)
+- [`enum registers`](/reference/register/registers.md)
 - [`enum instructions`](<>)
 - [The instruction module](<>)

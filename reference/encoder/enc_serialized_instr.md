@@ -105,7 +105,7 @@ instruction encoding.
 
 ### See also
 
-- [`buffer_t`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/buffer/buffer.md)
+- [`buffer_t`](/reference/buffer/buffer_t.md)
 - [`instr_generic_t`](<>)
 - [`rex_t`](<>)
 - [`op_modrm`](<>)

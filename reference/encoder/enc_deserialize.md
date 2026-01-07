@@ -39,5 +39,5 @@ functions of the buffer module.
 
 ### See also
 
-- [`buffer_t`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/buffer/buffer.md)
-- [`enc_serialized_instr`](https://github.com/cheng-alvin/jas-doc/blob/main/modules/encoder/enc_serialized_instr.md)
+- [`buffer_t`](/reference/buffer/buffer_t.md)
+- [`enc_serialized_instr`](/reference/encoder/enc_serialized_instr.md)
