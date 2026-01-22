@@ -1,4 +1,4 @@
-### `op_modrm_t`
+## `op_modrm_t`
 
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
@@ -21,6 +21,7 @@ the `operand_t` type should be consulted for more information.
 ### Synopsis
 
 ```c
+#include <operand.h>
 typedef struct __attribute__((packed)) op_modrm {
   enum op_modrm_modes mod : 2;
 
