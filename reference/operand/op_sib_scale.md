@@ -4,8 +4,14 @@
 
 Enumerated value used for the representation of the 'scale' component of a SIB
 byte. Rather than having random values representing the scales, the enumeration
-attaches the an alias to the corresponding value, allowing the tagged value to
+attaches an alias to the corresponding values, allowing the tagged value to
 be directly casted into a raw value for direct encoding.
+
+> [!NOTE]
+> There are varying explanations and standards regarding the actual effective
+> size of any enum value in C. When casting to any encoder-sensitive byte,
+> including the SIB byte, only the trailing 2 bits of the enum should be
+> effective to ensure no memory overlap occurs when casted.
 
 ### Synopsis
 
@@ -14,17 +20,13 @@ be directly casted into a raw value for direct encoding.
 enum op_sib_scale;
 ```
 
-> [!NOTE]
-> There are varying explanations and standards regarding the actual effective
-> size of any enum value in C. When casting to any encoder-sensitive byte,
-> including the SIB byte, only the trailing 2 bits of the enum should be
-> effective to ensure no memory overlap occurs when casted.
+### Additional notes
 
 In simple terms, the scale in the SIB byte defines the factor the index register
 should be multiplied to when referencing an effective address. It should be
 noted that the this enum also represents input values in a similar fashion when
 provided as input through the `operand_t` structure, rather than having a
-separate enum.
+separate enum purely dedicated towards input.
 
 ### See also
 

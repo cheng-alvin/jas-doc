@@ -22,6 +22,7 @@ the `operand_t` type should be consulted for more information.
 
 ```c
 #include <operand.h>
+
 typedef struct __attribute__((packed)) op_modrm {
   enum op_modrm_modes mod : 2;
 
