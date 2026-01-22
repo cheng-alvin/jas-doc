@@ -7,6 +7,11 @@ Structure for representing the Intel ModR/M byte with its associated members.
 intermediate representation of a memory reference. Rather, the `op_modrm_t` type
 should only be used for guideline of an encoder output, not an input.
 
+Typically, unless special modifications and where there is an operational need
+for the application of the structure, this structure would mostly be reserved
+for internal usage. For a higher level of representation of memory locations,
+the `operand_t` type should be consulted for more information.
+
 > [!TIP]
 > As `op_modrm_t` is marked as `packed` within the `clang` compilation system,
 > it allows the encoder's exact value to be represented and can be directly
@@ -26,12 +31,11 @@ typedef struct __attribute__((packed)) op_modrm {
 
 ### Argument specifications
 
+- `mod` - Specifies the mode field of the ModR/M byte, modifying the content of
+  the `rm` field of the ModR/M byte as the `reg` field would always remain as an
+  register or opcode extension.
+
 - `reg` & `rm` - Encoded register value content for the memory reference.
-- `mod` - Specifies the mode portion of the ModR/M byte. Since the `rm` member
-  of the ModR/M byte is variable and can contain _either_ a register or memory
-  operand, the `mod` value describes the R/M field's type. More information
-  regarding the specifics of the ModR/M byte can be obtained from official
-  sources.
 
 > [!NOTE]
 > Operations with registers should _always_ be done with the `registers` enum.
@@ -46,7 +50,7 @@ typedef struct __attribute__((packed)) op_modrm {
 Despite the `reg` and `rm` values being represented as `uint8_t`s, the actual
 data size is still a bit field consisting of 3 bits, in adherence to the Intel
 ModR/M byte's inherent structure. Attempts to directly assign a `registers` enum
-is **not supported** and may result in overflow into the following members as an
+is unsupported and may result in overflow into the following members as an
 enumerated value is typically 1 byte wide.
 
 It is also **strongly recommended** that the `clang` or `gcc` compilers are used
