@@ -4,8 +4,8 @@
 
 Enumerated value used for the representation of the 'scale' component of a SIB
 byte. Rather than having random values representing the scales, the enumeration
-attaches an alias to the corresponding values, allowing the tagged value to
-be directly casted into a raw value for direct encoding.
+attaches an alias to the corresponding values, allowing the tagged value to be
+directly casted into a raw value for direct encoding.
 
 > [!NOTE]
 > There are varying explanations and standards regarding the actual effective
