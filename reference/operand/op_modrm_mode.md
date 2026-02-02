@@ -9,11 +9,6 @@ displacement size and corresponding mode. `op_modrm_mode` allows for encoder
 size optimizations to be made by consistently enforcing the smallest applicable
 displacement size.
 
-It should be noted that in adherence to standard Intel terminology, *operand
-size* depicts to the size of the *data* itself, rather than the displacement
-size in encoding. This means, no displacement size is provided by the user
-directly.
-
 > [!NOTE]
 > This function only checks for when a displacement value is used along side a
 > ModR/M value. Callers wanted to check `OP_MODRM_MODE_REG` should check whether
@@ -29,11 +24,16 @@ enum op_modrm_modes op_modrm_mode(uint64_t displacement, uint8_t *sz);
 
 ### Argument specifications
 
+- `sz` - Original size of displacement as indicated by input.
+
 - `displacement` - The displacement value of the operand. Used for checking
   whether the operand offset exceeds the maximum allowed for _8_ or _32_ bit
   displacement sizes.
 
-- `sz` - Original size of displacement as indicated by input.
+It should be noted that in adherence to standard Intel terminology, _operand
+size_ depicts to the size of the _data_ itself, rather than the displacement
+size in encoding. This means, no displacement size is provided by the user
+directly. Hence, why this function is implemented in the source tree.
 
 ### See also
 
