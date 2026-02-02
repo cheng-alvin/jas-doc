@@ -9,6 +9,11 @@ displacement size and corresponding mode. `op_modrm_mode` allows for encoder
 size optimizations to be made by consistently enforcing the smallest applicable
 displacement size.
 
+It should be noted that in adherence to standard Intel terminology, *operand
+size* depicts to the size of the *data* itself, rather than the displacement
+size in encoding. This means, no displacement size is provided by the user
+directly.
+
 > [!NOTE]
 > This function only checks for when a displacement value is used along side a
 > ModR/M value. Callers wanted to check `OP_MODRM_MODE_REG` should check whether
