@@ -7,9 +7,9 @@ encodable integer value through the usage of a lookup table, regardless of the
 requirement of a register extension for the actual encoding of provided
 register.
 
-Due to limitations with C's ability to represent repeated values in
-enums (since register extensions are used), directly appending the `registers`
-enum value to the ModR/M or opcode value is invalid.
+Due to limitations with C's ability to represent repeated values in enums (since
+register extensions are used), directly appending the `registers` enum value to
+the ModR/M or opcode value is invalid.
 
 ### Synopsis
 
@@ -36,9 +36,9 @@ than the supported range is provided.
 
 If `reg_lookup_val` returns a `0` value that is **not** corresponding to a
 register value, it is indicative of an unsuccessful lookup for the register's
-encoded value; _either_ due to an out-of-bounds index value or
-providing a `REG_NULL` value. Specific information regarding the error can be
-obtained via the nominated error handling callback function.
+encoded value; _either_ due to an out-of-bounds index value or providing a
+`REG_NULL` value. Specific information regarding the error can be obtained via
+the nominated error handling callback function.
 
 ### Register value constants
 
@@ -50,4 +50,4 @@ the `register.h` header. Constants for register values are prepended with the
 ### See also
 
 - [`enum registers`](/reference/register/registers.md)
-- [`err`]()
+- [`err`](<>)
