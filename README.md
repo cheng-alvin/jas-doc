@@ -6,7 +6,7 @@ source code is stored here in this repository, please visit the main repository
 code that this documentation repository is based upon.
 
 > [!NOTE]
-> The Jas assembler documentation should *not* be treated as a guide in writing,
+> The Jas assembler documentation should _not_ be treated as a guide in writing,
 > or reading x86 assembly code, or C. For details regarding the specifics of the
 > Intel architecture, please consult actual Intel endorsed or published sources
 > such as the [Intel Software Developers' Manual](https://shorturl.at/NaWVY)
@@ -21,14 +21,14 @@ and enumerated values are also documented where relevant in their respective
 module directories.
 
 Documentation is also provided within header files itself within the code's
-`include/` directory. Such documentation comments can be viewed as a *"quick
-reference"* and specifically aids in integration of documentation with IDE or
+`include/` directory. Such documentation comments can be viewed as a _"quick
+reference"_ and specifically aids in integration of documentation with IDE or
 code editors, however, more details would always be provided in this repository.
 
 ### 📖 Obtaining documentation
 
 Since the entirety of the Jas documentation is written and actively maintained
-Markdown. The documentation files may be obtained locally and viewed in your
+Markdown, the documentation files may be obtained locally and viewed in your
 text editor/viewer of choice by pulling the Git source tree:
 
 ```sh
@@ -42,13 +42,13 @@ You can pass in path for where to build the `mkdocs.yml` file to by setting
 `CONFIG_PATH`
 
 ```
-make CONFIG_PATH=..
+make CONFIG_PATH=".."
 ```
 
 This will build the `mkdocs.yml` configuration files to the parent directory by
-default *unless overridden* by `CONFIG_PATH`. Due mkdocs' inherent limitations
+default _unless overridden_ by `CONFIG_PATH`. Due mkdocs' inherent limitations
 and design choices, the hosting of the statically generated documentation
-outputs can *only* be done outside of the documentation directory itself.
+outputs can _only_ be done outside of the documentation directory itself.
 
 ### 📝 Licensing
 
@@ -58,9 +58,9 @@ license for projects like this! To obtain further details about the licensing
 requirements on all code in the Jas project, please see the main Jas source
 repository's [LICENSE](/LICENSE) file.
 
-*No warranty of any kind is provided, please double check official sources
-before deploying code to production*
+_No warranty of any kind is provided, please double check official sources
+before deploying code to production_
 
-______________________________________________________________________
+---
 
-*Made with love by Alvin / the Jas crew and contributors ❤️ .*
+_Made with love by Alvin / the Jas crew and contributors ❤️ ._
