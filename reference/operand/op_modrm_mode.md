@@ -30,6 +30,10 @@ enum op_modrm_modes op_modrm_mode(uint64_t displacement, uint8_t *sz);
   whether the operand offset exceeds the maximum allowed for _8_ or _32_ bit
   displacement sizes.
 
+### Error handling
+
+The `op_modrm_mode` function also checks whether the passed values exceed the published thresholds for said type. As the maximum displacement value allowed in a scalar instruction is 4 bytes, the function returns an error and invalidates the displacement when such case occurs. 
+
 It should be noted that in adherence to standard Intel terminology, _operand
 size_ depicts to the size of the _data_ itself, rather than the displacement
 size in encoding. This means, no displacement size is provided by the user
