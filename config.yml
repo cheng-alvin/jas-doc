@@ -1,7 +1,7 @@
 site_name: Jas Documentation
 logo: img/logo.png
 
-docs_dir: reference
+docs_dir: jas-doc/
 theme:
   name: readthedocs
 

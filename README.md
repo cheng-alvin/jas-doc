@@ -28,14 +28,27 @@ code editors, however, more details would always be provided in this repository.
 ### 📖 Obtaining documentation
 
 Since the entirety of the Jas documentation is written and actively maintained
-Markdown. The documentation can be viewed through the default Github file
-explorer, or any other supported applications. The documentation files may be
-obtained locally and viewed in your text editor/viewer of choice by pulling the
-current repository through:
+Markdown. The documentation files may be obtained locally and viewed in your
+text editor/viewer of choice by pulling the Git source tree:
 
 ```sh
 git clone https://github.com/cheng-alvin/jas-doc/
 ```
+
+The Jas documentation files are also hosted with mkdocs and can be served
+locally. After obtaining documentation files via Git, run the `make` command:
+
+You can pass in path for where to build the `mkdocs.yml` file to by setting
+`CONFIG_PATH`
+
+```
+make CONFIG_PATH=..
+```
+
+This will build the `mkdocs.yml` configuration files to the parent directory by
+default *unless overridden* by `CONFIG_PATH`. Due mkdocs' inherent limitations
+and design choices, the hosting of the statically generated documentation
+outputs can *only* be done outside of the documentation directory itself.
 
 ### 📝 Licensing
 

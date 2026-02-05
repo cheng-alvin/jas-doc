@@ -1,5 +1,5 @@
 # Should be provided, but fallback by default.
-CONFIG_PATH	     ?=	$(abspath .)
+CONFIG_PATH	     ?=	$(abspath ..)
 SCRIPT           := $(abspath ./scripts)
 
 all: format $(CONFIG_PATH)/mkdocs.yml 
