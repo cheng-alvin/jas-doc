@@ -8,7 +8,7 @@ format: $(shell find . -name "*.md")
 
 $(CONFIG_PATH)/mkdocs.yml: $(SCRIPT)/sidebarbuilder.js
 	@node $< ./reference > nav.txt
-	cat $(CONFIG_PATH)/config.yml nav.txt > $@
+	cat config.yml nav.txt > $@
 	@rm -rf nav.txt
 
 .PHONY: all format

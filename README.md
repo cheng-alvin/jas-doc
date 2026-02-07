@@ -61,6 +61,6 @@ repository's [LICENSE](/LICENSE) file.
 _No warranty of any kind is provided, please double check official sources
 before deploying code to production_
 
----
+______________________________________________________________________
 
 _Made with love by Alvin / the Jas crew and contributors ❤️ ._
