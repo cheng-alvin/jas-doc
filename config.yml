@@ -1,10 +1,19 @@
-site_name: Jas Documentation
-logo: img/logo.png
+# Intermediate configuration file for the documentation homepage
+# and relies upon `mkdocs` for the static generation of the 
+# website.
 
-docs_dir: jas-doc/
+site_name: Jas Documentation
+docs_dir: docs/
+
 theme:
   name: readthedocs
+  logo: img/logo.png
+  favicon: img/favicon.ico
 
+validation:
+  links:
+    absolute_links: relative_to_docs
+    
 plugins:
   - "gh-admonitions"
   - search
