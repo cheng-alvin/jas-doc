@@ -23,27 +23,7 @@ void buf_write_byte(buffer_t *buf, const uint8_t data);
 - `buf` - Pointer to the target `buffer_t` to be applied against.
 - `data` - A single byte value to be written into the `buffer_t` object.
 
-### Error handling
-
-Not applicable. Error handling specifications from `buf_write()` may apply.
-
-### Example
-
-```c
-#include <buffer.h>
-#include <stdlib.h>
-
-int main(void) {
-  buffer_t buf = BUF_NULL;
-  buf_write_byte(&buf, 0x00);
-
-  free(buf.data); // All done now.
-
-  return 0;
-}
-```
-
 ### See also
 
 - [`buffer_t`](/reference/buffer/buffer_t.md)
-- [`buf_write()`](/reference/buffer/buf_write.md)
+- [`buf_write`](/reference/buffer/buf_write.md)

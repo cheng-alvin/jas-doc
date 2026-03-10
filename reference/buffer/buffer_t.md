@@ -34,5 +34,5 @@ typedef struct {
 
 ### See also
 
-- [`buf_write()`](/reference/buffer/buf_write.md)
-- [`free()` from `stdlib.h`](https://www.tutorialspoint.com/c_standard_library/c_function_free.htm)
+- [`buf_write`](/reference/buffer/buf_write.md)
+- [`free` from `stdlib.h`](https://www.tutorialspoint.com/c_standard_library/c_function_free.htm)

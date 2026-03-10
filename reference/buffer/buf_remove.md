@@ -34,29 +34,7 @@ range of the `len` member, the caller should be ultimately responsible for
 ensuring such value is in bounds to avoid memory leaks and access of unallocated
 memory.
 
-### Example
-
-```c
-#include <buffer.h>
-
-#include <stdlib.h>
-#include <stdint.h>
-
-int main(void) {
-  uint8_t my_array[] = {0xAB, 0xCD, 0xEF};
-  size_t array_size = sizeof(my_array);
-
-  buffer_t buf = BUF_NULL;
-  buf_write(&buf, my_array, array_size);
-
-  buf_remove(&buf, 0); // Remove 1st element
-
-  free(buf.data);
-  return 0;
-}
-```
-
 ### See also
 
 - [`buffer_t`](/reference/buffer/buffer_t.md)
-- [`buf_write()`](/reference/buffer/buf_write.md)
+- [`buf_write`](/reference/buffer/buf_write.md)

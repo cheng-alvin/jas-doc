@@ -31,32 +31,6 @@ void buf_write(buffer_t *buf, const uint8_t *data, const size_t data_len);
   should be noted that **no** checking is done of data and size validity during
   runtime and memory security should be confirmed by caller.
 
-### Error handling
-
-The function returns when the chosen total amount of data as specified in
-`data_len` to be written is 0, indicating a lack of requirement of writing.
-
-### Example
-
-```c
-#include <buffer.h>
-
-#include <stdlib.h>
-#include <stdint.h>
-
-int main(void) {
-  uint8_t my_array[] = {0xAB, 0xCD, 0xEF};
-  size_t array_size = sizeof(my_array);
-
-  buffer_t buf = BUF_NULL;
-  buf_write(&buf, my_array, array_size);
-
-  free(buf.data); // All done now.
-
-  return 0;
-}
-```
-
 ### See also
 
 - [`buffer_t`](/reference/buffer/buffer_t.md)
