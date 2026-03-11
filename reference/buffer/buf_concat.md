@@ -2,10 +2,14 @@
 
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
-Function that concatenates a pre-determined amount of `buffer_t` structs to the base `buf` structure. `buf_concat` provides the necessary memory allocation operations to append additional structs onto the base struct.
+Function that concatenates a pre-determined amount of `buffer_t` structs to the
+base `buf` structure. `buf_concat` provides the necessary memory allocation
+operations to append additional structs onto the base struct.
 
 > [!NOTE]
-> As for every `buffer_t` operation, the caller is always responsible for the deallocation of heap-allocated memory associated with the buffers. This **includes** the arguments passed in as variadic arguments.
+> As for every `buffer_t` operation, the caller is always responsible for the
+> deallocation of heap-allocated memory associated with the buffers. This
+> **includes** the arguments passed in as variadic arguments.
 
 ### Synopsis
 

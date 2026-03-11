@@ -4,12 +4,10 @@
 
 Function for writing a single byte to the specified `buffer_t` structure.
 Elevates redundant arguments in size when single-byte sized data is to be
-written into a Jas buffer. Under the hood, this function is simply used as a
-wrapper function which calls the `buf_write()` with size of `1`
+written into a buffer as compared to a counterpart such as `buf_write`.
 
-The buffer module itself does **not** provide any memory de-allocation
-functionalities and is of responsibility to the caller to clean-up any memory
-leaks through the standard `free()` function.
+Under the hood, this function is simply used as a wrapper function which calls
+the `buf_write()` with size of `1`
 
 ### Synopsis
 
@@ -20,7 +18,9 @@ void buf_write_byte(buffer_t *buf, const uint8_t data);
 
 ### Argument specifications
 
-- `buf` - Pointer to the target `buffer_t` to be applied against.
+- `buf` - Pointer to the target `buffer_t` in question and allows manipulation
+  of the pointer allocation.
+  
 - `data` - A single byte value to be written into the `buffer_t` object.
 
 ### See also

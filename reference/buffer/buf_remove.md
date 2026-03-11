@@ -15,24 +15,13 @@ void buf_remove(buffer_t *buf, const size_t elem);
 
 ### Argument specifications
 
-- `buf` - Pointer to the target `buffer_t` object for the operation.
+- `buf` - Pointer to the target `buffer_t` manipulated for the operation.
 
 - `elem` - Value representing the index of the array that should be removed from
-  the allocated buffer. It should be noted that this should represent the
-  *index* in lieu of the *count*, that is, the offset from the first element;
-  akin to the indexing of array elements.
+  the allocated buffer.
 
-### Error handling
-
-If the supplied buffer is empty through a `0` represented `.len` value, the
-function terminates without further action. Where the supplied `elem` argument
-is out of range relative to the `len` member of the target buffer (`buf`), no
-bytes will be removed and may lead to undefined behavior.
-
-Due to the lack of error handling for whether the intended `elem` value is in
-range of the `len` member, the caller should be ultimately responsible for
-ensuring such value is in bounds to avoid memory leaks and access of unallocated
-memory.
+  It should be noted that this should represent the *index* of the value that is
+  to be removed from the buffer object, not to be confused with the count.
 
 ### See also
 

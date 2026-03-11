@@ -7,10 +7,6 @@ with a length of a specified size. Where the supplied buffer object is
 unavailable and contains `NULL`, the function will allocate a buffer memory
 field automatically.
 
-The buffer module itself does **not** provide any memory de-allocation
-functionalities and is of responsibility to the caller to clean-up any memory
-leaks through the standard `free()` function.
-
 ### Synopsis
 
 ```c
@@ -21,15 +17,17 @@ void buf_write(buffer_t *buf, const uint8_t *data, const size_t data_len);
 ### Argument specifications
 
 - `buf` - Pointer to the target `buffer_t` object for the operation to be
-  applied towards.
+  applied towards. Any reallocations (where applicable) are manipulated through
+  de-referencing this pointer.
 
-- `data` - A pointer to the array of bytes that is intended to be written to the
-  buffer as supplied in `buf`.
+- `data` - An array of bytes to be appended.
 
-- `data_len` - Size of the supplied data in bytes and specifies the amount of
-  data to be read by the function and therefore appended to the buffer array. It
-  should be noted that **no** checking is done of data and size validity during
-  runtime and memory security should be confirmed by caller.
+- `data_len` - Size of the supplied data in bytes and specifies the length of
+  data to be appended to the `buffer_t` structure.
+
+> [!WARNING]
+> *No* error checking is done to ensure the validity of teh `data_len` argument
+> and *assumes* that the actual size of the `data` matches the supplied length.
 
 ### See also
 

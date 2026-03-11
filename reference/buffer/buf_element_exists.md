@@ -11,8 +11,8 @@ Function for checking if the supplied element value exists within the buffer.
 Returns a boolean value indicative of whether said element has been found in
 supplied buffer.
 
-`buf_element_exists` only checks for the existence
-and does not return excess information such as position, number of instances etc.
+`buf_element_exists` only checks for the existence and does not return excess
+information such as position, number of instances etc.
 
 ### Synopsis
 
