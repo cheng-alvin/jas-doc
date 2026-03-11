@@ -11,9 +11,6 @@ Function for checking if the supplied element value exists within the buffer.
 Returns a boolean value indicative of whether said element has been found in
 supplied buffer.
 
-`buf_element_exists` only checks for the existence and does not return excess
-information such as position, number of instances etc.
-
 ### Synopsis
 
 ```c
@@ -25,6 +22,11 @@ bool buf_element_exists(buffer_t *buf, const uint8_t elem);
 
 - `buf` - Pointer to the target `buffer_t` object for the operation.
 - `elem` - The target value for checking inclusion in the buffer in question.
+
+`buf_element_exists` only checks for the existence and does not return excess
+information such as position, number of instances etc. It can be expected that
+there will be _no_ modifications are made to the content of the `buf` object
+parameter through usage of this function.
 
 ### See also
 
