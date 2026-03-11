@@ -12,16 +12,6 @@ operations such as writing, removal of concatenation of bytes.
 > functionalities and is the responsibility of the **caller** to clean-up any
 > memory leaks through the standard `free()` function.
 
-### Synopsis
-
-```c
-typedef struct {
-  uint8_t *data;
-  size_t len;
-
-} buffer_t;
-```
-
 ### Argument specifications
 
 - `data` - A dynamically allocated pointer bound array of byte-sized data.
@@ -29,7 +19,7 @@ typedef struct {
 
 It is recommended to preset `data` as a `NULL` pointer when _no_ value is
 assigned to said variable. Dynamic allocation functions such as `realloc`
-automatically allocates a new pointer if passed as `NULL`.
+automatically allocates a new pointer if `NULL`.
 
 > [!TIP]
 > The Jas library provides a built in placeholder macro for the definition of
