@@ -4,12 +4,12 @@
 
 Function that concatenates a pre-determined amount of `buffer_t` structs to the
 base `buf` structure. `buf_concat` provides the necessary memory allocation
-operations to append additional structs onto the base struct.
+operations to append additional structs onto the base `buffer_t ` structure.
 
 > [!NOTE]
 > As for every `buffer_t` operation, the caller is always responsible for the
 > deallocation of heap-allocated memory associated with the buffers. This
-> **includes** the arguments passed in as variadic arguments.
+> **includes** the arguments passed in as variadic.
 
 ### Synopsis
 
@@ -20,15 +20,19 @@ void buf_concat(buffer_t *buf, size_t count, ...);
 
 ### Argument specifications
 
-- `buf` - Pointer to the target `buffer_t` object for the operation.
+- `buf` - Pointer to the target `buffer_t` object to assign final results.
+- `count` - Specifies the number of following buffers to be appended to `buf`.
 
-- `count` - Number of buffers following this argument to be combined with the
-  `buf` argument. No checking is done by the function to ensure data are in
-  bounds of provided variadic arguments and the arguments' identity.
+<!-- Line break -->
 
-- `...` - Variadic arguments, represents a list of `buffer_t` structs to be
-  appended to the main `buf` buffer. Conditions and validation check that apply
-  to `buf_write` may also apply to `buf_concat` due to its dependence.
+- `...` - Variadic arguments that represents a list of `buffer_t` structs to be
+  concatenated.
+
+> [!WARNING]
+> **No** error validation is/can be done to the `count` argument to ensure that
+> `count` does not exceed the provided amount of variadic arguments supplied. A
+> misleading `count` parameter may cause memory leaks due to reading beyond
+> intended data.
 
 ### See also
 
