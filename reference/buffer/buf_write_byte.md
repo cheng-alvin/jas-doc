@@ -6,9 +6,6 @@ Function for writing a single byte to the specified `buffer_t` structure.
 Elevates redundant arguments in size when single-byte sized data is to be
 written into a buffer as compared to a counterpart such as `buf_write`.
 
-Under the hood, this function is simply used as a wrapper function which calls
-the `buf_write()` with size of `1`
-
 ### Synopsis
 
 ```c
@@ -18,10 +15,13 @@ void buf_write_byte(buffer_t *buf, const uint8_t data);
 
 ### Argument specifications
 
-- `buf` - Pointer to the target `buffer_t` in question and allows manipulation
-  of the pointer allocation.
-  
-- `data` - A single byte value to be written into the `buffer_t` object.
+- `buf` - `buffer_t` structure in question for the write to be completed on.
+- `data` - A user-defined byte to be added to the `buf` buffer object.
+
+Under the hood, this function is simply implemented as a wrapper function which calls
+the default `buf_write` with size of `1`, supplying the chosen data to `buf_write`. Thus, requirements that apply to `buf_write` may also apply to `buf_write_byte`.
+
+_It is highly encouraged to consult the documentation file for [`buf_write`](/reference/buffer/buf_write.md)_
 
 ### See also
 
