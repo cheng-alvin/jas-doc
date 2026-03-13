@@ -18,10 +18,13 @@ void buf_write_byte(buffer_t *buf, const uint8_t data);
 - `buf` - `buffer_t` structure in question for the write to be completed on.
 - `data` - A user-defined byte to be added to the `buf` buffer object.
 
-Under the hood, this function is simply implemented as a wrapper function which calls
-the default `buf_write` with size of `1`, supplying the chosen data to `buf_write`. Thus, requirements that apply to `buf_write` may also apply to `buf_write_byte`.
+Under the hood, this function is simply implemented as a wrapper function which
+calls the default `buf_write` with size of `1`, supplying the chosen data to
+`buf_write`. Thus, requirements that apply to `buf_write` may also apply to
+`buf_write_byte`.
 
-_It is highly encouraged to consult the documentation file for [`buf_write`](/reference/buffer/buf_write.md)_
+_It is highly encouraged to consult the documentation file for
+[`buf_write`](/reference/buffer/buf_write.md)_
 
 ### See also
 
