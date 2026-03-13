@@ -18,18 +18,19 @@ are considered as _directives_.
 
 - `dir` - Type of directive this directive is considered to be a part of.
 
-The above argument is required for all instances as it outlines the target value of the union. Due to the
-variance between data-types of the varying directives, `directive_t` splits
-values into groups associated with respective `dir` values as defined below.
+The above argument is required for all instances as it outlines the target value
+of the union. Due to the variance between data-types of the varying directives,
+`directive_t` splits values into groups associated with respective `dir` values
+as defined below.
 
 ### `DIR_DEFINE_BYTES`
 
 Similar to the `db` directive as seen in NASM.
 
-The `DIR_DEFINE_BYTES` directive allows the user/caller to insert a custom array of bytes in
-the `buffer_t` format. By including the bytes in the assembler code as a
-_directive_, it enables the label or executable generators to factor extra bytes
-into size/offset calculations such as linking.
+The `DIR_DEFINE_BYTES` directive allows the user/caller to insert a custom array
+of bytes in the `buffer_t` format. By including the bytes in the assembler code
+as a _directive_, it enables the label or executable generators to factor extra
+bytes into size/offset calculations such as linking.
 
 - `data`- A buffer with custom data in the form of a `buffer_t`.
 
@@ -51,5 +52,5 @@ as internal usage in provided code.
 ### See also
 
 - [`buffer_t`](/reference/buffer/buffer_t.md)
-- [`instructions_t`]()
-- [`instr_generic_t`]()
+- [`instructions_t`](<>)
+- [`instr_generic_t`](<>)
