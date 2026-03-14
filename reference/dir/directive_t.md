@@ -23,7 +23,7 @@ of the union. Due to the variance between data-types of the varying directives,
 `directive_t` splits values into groups associated with respective `dir` values
 as defined below.
 
-### `DIR_DEFINE_BYTES`
+#### `DIR_DEFINE_BYTES`
 
 Similar to the `db` directive as seen in NASM.
 
@@ -34,7 +34,7 @@ bytes into size/offset calculations such as linking.
 
 - `data`- A buffer with custom data in the form of a `buffer_t`.
 
-### `DIR_DEFINE_LABEL`
+#### `DIR_DEFINE_LABEL`
 
 This directive defines and registers a label to the ELF emitter for the
 generation of a symbol table entry, thus allowing for external linkage as well
