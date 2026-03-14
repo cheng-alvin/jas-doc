@@ -3,8 +3,8 @@
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
 Function for writing a single byte to the specified `buffer_t` structure.
-Elevates redundant arguments in size when single-byte sized data is to be
-written into a buffer as compared to a counterpart such as `buf_write`.
+Elevates redundant arguments in specifying a size argument when single-byte
+sized data is to be written into a buffer.
 
 ### Synopsis
 
@@ -20,8 +20,8 @@ void buf_write_byte(buffer_t *buf, const uint8_t data);
 
 Under the hood, this function is simply implemented as a wrapper function which
 calls the default `buf_write` with size of `1`, supplying the chosen data to
-`buf_write`. Thus, requirements that apply to `buf_write` may also apply to
-`buf_write_byte`.
+`buf_write`. Thus, requirements that apply to `buf_write` may also apply to the
+`buf_write_byte` function's arguments and error checking.
 
 _It is highly encouraged to consult the documentation file for
 [`buf_write`](/reference/buffer/buf_write.md)_

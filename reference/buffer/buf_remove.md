@@ -3,8 +3,8 @@
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
 Function for quickly removing a single element from a specified `buffer_t`
-structure based on a provided index. Said function automatically handles data
-allocations and moves array elements in correct positions.
+structure based on a provided index. `buf_remove` automatically handles data
+allocations and re-allocations.
 
 ### Synopsis
 
@@ -19,9 +19,10 @@ void buf_remove(buffer_t *buf, const size_t elem);
 - `elem` - Value representing the index of the array that should be removed from
   the buffer
 
-It should be noted that the `elem` parameter should represent the _index_ of the
-value that is to be removed from the buffer object, not to be confused with the
-count of the elements.
+> [!WARNING]
+> It should be noted that the `elem` parameter should represent the _index_ of
+> the value that is to be removed from the buffer object, not to be confused
+> with the count of the elements.
 
 If the index as specified in `elem` exceeds the size shown in the `len` member
 of `buffer_t`, no operation will be completed. However, no error will also be
