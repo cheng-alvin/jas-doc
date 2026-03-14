@@ -5,7 +5,8 @@
 Function for writing a string of bytes to the specified buffer object structure
 with a length of a specified size. Where the supplied buffer's `data` member
 allocation is assigned as `NULL`, the function will allocate a _new_ data field
-automatically.
+automatically. See
+[Handling `buffer_t` structures](/reference/buffer/buffer_t/#handling-buffer_t-structures)
 
 ### Synopsis
 
