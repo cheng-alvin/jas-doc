@@ -1,19 +1,17 @@
 ## `enc_deserialize`
 
-Function for the conversion of a serialized structure in the form of a
-`enc_serialized_instr_t` struct into a continuous encoded buffer. The process of
-converting an intermediate `enc_serialized_instr_t` struct is considered
-*deserialization*, which contradicts *serialization* that encodes a raw
-instruction generic input into a serialized struct. See `enc_serialized_instr_t`
-for more details.
+Function for the conversion of a single serialized-instruction structure in the
+form of a `enc_serialized_instr_t` struct onto a continuous encoded buffer.
 
-> [!NOTE]
-> `enc_deserialize` should only be used as the *final* step of assembly. Any
+The process of converting an intermediate `enc_serialized_instr_t` struct is
+considered _deserialization_. The process opposes _serialization_ that encodes a
+raw instruction generic input into a serialized struct. See
+`enc_serialized_instr_t` for more details.
+
+> [!TIP]
+> `enc_deserialize` should only be used as the _final_ step of assembly. Any
 > processing of encoded instructions such as label evaluation and symbol table
-> generation should always interact with the serialized instruction. Such
-> approach provides guaranteed structure, supporting external amendments. It is
-> also recommended that processing done by the caller also interact with
-> `enc_serialized_instr_t` instead.
+> generation should always interact with the serialized instruction.
 
 ### Synopsis
 
@@ -24,18 +22,19 @@ buffer_t enc_deserialize(enc_serialized_instr_t *in, buffer_t buf);
 
 ### Argument specifications
 
-- `in` - The serialized instruction produced by a serialization function.
+- `in` - The serialized instruction input in the `enc_serialized_instr_t` form.
+- `buf` - Buffer in which the deserialized instructions should be appended to.
 
-- `buf` - Base buffer the instruction should be appended onto. The usage of this
-  argument reduced need for the constant concatenation individual buffer
-  representation of deserialized instructions; instead, the provided in `in` can
-  be deserialized directly onto the target buffer. The caller can opt-out of
-  utilizing such behavior by passing `NULL` instead, which instantiates a fresh
-  buffer.
+The caller may choose to _either_ append the deserialized instruction onto the
+current `buffer_t` structure; _or_ deserialize the instruction onto a fresh
+buffer through passing the `BUF_NULL` constant as `buf`. The newly instantiated
+or reallocated `buffer_t` will be **returned**.
 
-The updated buffer pointer would be returned from `enc_deserialize`, or a new
-buffer when `buf` is set to `NULL`. The return value can be modified through
-functions of the buffer module.
+> [!NOTE]
+> Contrary to the `buffer_t` functions which modifies buffer objects in place,
+> `enc_deserialize` provides the updated buffer as a **return value**. A return
+> value of `BUF_NULL` indicates an error during deserialization, monitor the
+> `err` function callback for diagnostic information.
 
 ### See also
 
