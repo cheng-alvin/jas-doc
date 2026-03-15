@@ -2,17 +2,15 @@
 
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
-> [!NOTE]
-> `enc_serialize` is typically used within internal logic of the assembler,
-> particularly within code generation steps. However, this function can still be
-> used for guidance and facilitate the encoding of instructions independent of
-> Jas assembler components.
-
 Function facilitating the serialization of generic instruction inputs into an
-intermediate encoder representation in the form of the `enc_serialized_instr`
-structure. The representations of the instructions in the serialized form
-retains human readable/processable structure while adding near-machine code
-details such as opcodes and size calculations.
+intermediate encoder representation as an `enc_serialized_instr` structure.
+`enc_serialize` is the primary form of encoding and uses a corresponding
+instruction encoder input to produce its instruction opcode, operand and
+prefixes encoding.
+
+_As the `enc_serialized_instr` structure is converted from a human readable
+format, thus, it is recommended to view the `enc_serialized_instr` documentation
+for more information._
 
 ### Synopsis
 
@@ -23,43 +21,31 @@ struct enc_serialized_instr *enc_serialize(instr_generic_t *instr, enum modes mo
 
 ### Argument specifications
 
-- `instr` - Pointer to an instruction generic input value. Despite being able
-  represent *both* instructions and directive inputs, this value should only
-  utilize the `instr` component of the generic value.
+- `instr` - Pointer to an instruction generic input value which is to be
+  encoded.
+- `mode` - The current mode the code is to be assembled in for error checking.
 
-- `mode` - The operating mode of the assembler module; allows mode-specific
-  validations and error checking processes to be carried out during the encoder
-  step. (See *Error handling* for more information)
+As the `instr_generic_t` type may be able to point to _either_ an instruction
+_or_ directive value, `enc_serialize` checks whether the input is an
+instruction. The function will return if passed as a directive.
 
 ### Error handling
 
-Error checking conditions exists for the encoding of instructions. The
-instruction encoder reference table provides reference information regarding the
-validity of encoding identities across different modes and ultimately exerts
-wether the instruction is valid. Error checking in the `enc_serialize` function
-can be classified into the following categories:
-
-> [!NOTE]
-> Where a fatal error condition has been met, `enc_serialize` will immediately
-> seize the current process, terminating with a `NULL` pointer value. If the
-> instruction generic is provided with a `DIRECTIVE` type, or have a `NULL`'ed
-> pointer provided, serialization will **not** occur and will immediately
-> terminate.
+Where a fatal error condition has been met, `enc_serialize` will return a `NULL`
+pointer value. For additional diagnostic information, the caller should monitor
+the `err` error callback channel. The following list shows common errors the
+encoder may encounter due to invalid caller inputs:
 
 - **Mismatch of modes** - Where the provided `mode` parameter fails match with
   either the `long_mode`, or `leg_mode` members in 64-bit long mode or 16-bit
-  legacy mode. Specifics can be obtained on the `instr_encode_table_t` page.
+  legacy mode.
+
+<!-- Line break -->
 
 - **Operand mismatch/invalidity** - After the instruction encoder reference
   table has been obtained, there may be inconsistencies between the input
-  instruction, in particular with the operand size and types. This class of
-  errors indicate an inconsistency between the expect operand type and size
-  restrictions and the input values.
-
-The `enc_serialize` function tool also utilizes the `err` module for error
-reporting. Along with the return of a `NULL` pointer, an error message would
-also typically be produced and reported to the predetermined callback method,
-set by the caller.
+  instruction. A fatal error may be flagged as the encoder is unable to encode
+  the instruction if certain operand conditions aren't met.
 
 ### See also
 
