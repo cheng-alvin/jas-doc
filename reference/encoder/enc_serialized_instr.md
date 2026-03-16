@@ -31,12 +31,13 @@ listed above.
 
 #### Opcode
 
-- `opcode` - An array consisting of a maximum of 3 bytes representing the
-  opcode.
-
 This is the only mandated member of the structure. The opcode should be directly
 carried over form the matched opcode of the instruction encoder reference table.
+The correct opcode size and opcode can be obtained by matching and the correct
+operand combinations with the instruction.
 
+- `opcode` - An array consisting of a maximum of 3 bytes representing the
+  opcode.
 - `opcode_size` - The corresponding size definition variable of the `opcode`
   member.
 
