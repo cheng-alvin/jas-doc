@@ -44,12 +44,18 @@ operand combinations with the instruction.
 #### Memory definition
 
 - `modrm` - The definition of the ModR/M byte in the `op_modrm_t` form.
-- `sib` - SIB byte value where required, can be simply left as `NULL`.
+- `sib` - SIB byte value where required, can be simply left as blank if not
+  applicable.
 
 <!-- Line Break -->
 
 - `has_modrm` & `has_sib`- A set of booleans depicting whether respective
   entries exist.
+
+If either values are not applicable, they may simply be padded with `0`s by
+casting an integer to the struct's value like so: `(enc_serialized_instr_t){0}`.
+Additionally, the respective `has_modrm` and/or `has_sib` indicative values are
+to be set to `false` to prevent placeholder values to be read.
 
 #### Immediate/displacement values
 
@@ -62,13 +68,10 @@ operand combinations with the instruction.
 > written in the `disp` and `disp_size` variables. Rather, the `imm` is not to
 > be filled with a constant value for an offset.
 
-x86 inherently only supports exclusively of the usage for data that's _1, 2, 4,
-or 8 bytes_ long. However, a data size of 0 is never allowed in instruction
-encoding.
-
 Setting `disp_size` and `imm_size` as a value of `0` is indicative for the
-_lack_ of either immediate or displacement values, respectively. Sizes are also
-typically in fixes increments in x86/x64.
+existence of immediate or displacement values, respectively. Sizes are also
+typically in fixes increments of _1, 2, 4 and 8_ bytes long in x86/x64; however
+this isn't usually checked in the serialization process.
 
 - `disp_size` & `imm_size` - The size of the displacement and immediate values.
 
