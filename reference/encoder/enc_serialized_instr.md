@@ -22,19 +22,18 @@ listed above.
 
 - `prefixes` - A buffer of a variable size that contains the prefixes applicable
   for the instruction.
-- `rex` - Contains and single byte REX prefix and can be modified accordingly.
+- `rex` - Contains and single byte representing the REX prefix byte.
 
 > [!NOTE]
 > The `rex` prefix member should be set to `REX_DEFAULT` by default to indicate
-> the presence of a REX prefix. Jas uses the condition to determine whether a
-> REX prefix byte should be appended into the final encoder result.
+> a lack of REX prefix. Jas uses the condition to determine whether a REX prefix
+> byte should be appended into the final encoder result.
 
 #### Opcode
 
-This is the only mandated member of the structure. The opcode should be directly
-carried over form the matched opcode of the instruction encoder reference table.
-The correct opcode size and opcode can be obtained by matching and the correct
-operand combinations with the instruction.
+This is the only **mandated member** of the structure. The opcode should be
+directly carried over from the matched opcode from the instruction encoder
+reference table with equal operands.
 
 - `opcode` - An array consisting of a maximum of 3 bytes representing the
   opcode.
