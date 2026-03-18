@@ -2,11 +2,6 @@
 
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
-> [!WARNING]
-> This function is currently undergoing internal changes. Callers should note
-> that its API may have a breaking change _at any time_ with regards to this
-> function.
-
 Utility function for checking and confirming that the types of the input operand
 array matches an array of expected operand types. `op_assert_types` returns a
 boolean value corresponding to whether if the provided array of operand structs
