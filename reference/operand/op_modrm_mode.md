@@ -2,18 +2,17 @@
 
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
-_Not to be confused with the type `op_modrm_modes`_
+_Not to be confused with the enumeration **type** `op_modrm_modes`_
 
 Function for the automatic allocation of a ModR/M mode value based on operand
 displacement size. `op_modrm_mode` allows for encoder size optimizations to be
 made by consistently enforcing the smallest applicable displacement size.
 
-Usage of `op_modrm_mode` assumes that the target data as represented by the
-ModR/M byte points to a memory location, and not a register's value.
-
 > [!NOTE]
-> Callers wanted to check `OP_MODRM_MODE_REG` should check whether the operand
-> itself falls into the register operand category in lieu of this function.
+> Usage of `op_modrm_mode` assumes that the target data as represented by the
+> ModR/M byte points to a memory location, and **not** a register's value. Thus,
+> callers intending to check `OP_MODRM_MODE_REG` should check whether the
+> operand itself is categorized as a register.
 
 ### Synopsis
 
@@ -28,7 +27,7 @@ enum op_modrm_modes op_modrm_mode(uint64_t displacement, uint8_t *sz);
 
 - `displacement` - The displacement value of the operand. Used for checking
   whether the operand offset exceeds the maximum allowed for _8_ or _32_ bit
-  displacement sizes.
+  displacement sizes based on `limits.h`.
 
 ### Error handling
 
