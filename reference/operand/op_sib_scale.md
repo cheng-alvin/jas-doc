@@ -2,31 +2,23 @@
 
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
-Enumerated value used for the representation of the 'scale' component of a SIB
-byte. Rather than having random values representing the scales, the enumeration
-attaches an alias to the corresponding values, allowing the tagged value to be
-directly casted into a raw value for direct encoding.
+_With regards to `op_sib_scale`, it is highly recommended to see
+[`op_modrm_modes`](/reference/operand/op_modrm_modes.md)_
 
-> [!NOTE]
-> There are varying explanations and standards regarding the actual effective
-> size of any enum value in C. When casting to any encoder-sensitive byte,
-> including the SIB byte, only the trailing 2 bits of the enum should be
-> effective to ensure no memory overlap occurs when casted.
+Enum for the representation of the `scale` component of a SIB byte (typically
+expressed as an `op_sib` struct) in accordance to constant values published by
+the Intel Developer's Manual.
 
-### Synopsis
+### Usage
 
-```c
-#include <operand.h>
-enum op_sib_scale;
-```
+As the total size of the `scale` component of the SIB byte is constrained to
+only 2 bits wide, the scale number is indicated with values ranging from 0 to 3
+inclusive, and can be casted into integers.
 
-### Additional notes
-
-In simple terms, the scale in the SIB byte defines the factor the index register
-should be multiplied to when referencing an effective address. It should be
-noted that the this enum also represents input values in a similar fashion when
-provided as input through the `operand_t` structure, rather than having a
-separate enum purely dedicated towards input.
+The size enum value is typically represented as a _bit field_ of the `op_sib`
+byte so it can be casted directly in a similar fashion to the `op_modrm_t`
+struct; as well as the in the `op_mem` structure. View the respective
+documentation files for more information.
 
 ### See also
 

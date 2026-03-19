@@ -37,7 +37,10 @@ typedef struct __attribute__((packed)) op_modrm {
 
 - `reg` & `rm` - Encoded register value for the memory/register respectively
 
-The `reg` and `rm` values are to be set as _integers_ from 0-7 inclusive. The `reg_lookup_val` function is to be utilized in the evaluation of said values. Or alternatively, a nominated operand extension can be used in accordance to the defined encoder's reference table.
+The `reg` and `rm` values are to be set as _integers_ from 0-7 inclusive. The
+`reg_lookup_val` function is to be utilized in the evaluation of said values. Or
+alternatively, a nominated operand extension can be used in accordance to the
+defined encoder's reference table.
 
 > [!NOTE]
 > Operations with registers should _always_ be done with the `registers` enum.
