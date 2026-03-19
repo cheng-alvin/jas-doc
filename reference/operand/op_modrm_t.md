@@ -4,19 +4,15 @@
 
 Structure for representing the Intel ModR/M byte with its associated members.
 `op_modrm_t` is commonly used in the final encoding process, as opposed for
-intermediate representation of a memory reference. Rather, the `op_modrm_t` type
-should only be used for guideline of an encoder output, not an input.
+intermediate representation of a memory reference during compilation or input as
+it lacks significant details.
 
-Typically, unless special modifications and where there is an operational need
-for the application of the structure, this structure would mostly be reserved
-for internal usage. For a higher level of representation of memory locations,
-the `operand_t` type should be consulted for more information.
+_Operand inputs and processing should use the `operand_t` type_
 
 > [!TIP]
 > As `op_modrm_t` is marked as `packed` within the `clang` compilation system,
 > it allows the encoder's exact value to be represented and can be directly
-> casted over into a `uint8_t` for writing into a buffer; hence, why this struct
-> is unsuitable for representation of input values.
+> casted over into a `uint8_t` for writing into a `buffer_t`.
 
 ### Synopsis
 
@@ -37,22 +33,23 @@ typedef struct __attribute__((packed)) op_modrm {
   the `rm` field of the ModR/M byte as the `reg` field would always remain as an
   register or opcode extension.
 
-- `reg` & `rm` - Encoded register value content for the memory reference.
+<!-- New Line -->
+
+- `reg` & `rm` - Encoded register value for the memory/register respectively
+
+The `reg` and `rm` values are to be set as _integers_ from 0-7 inclusive. The `reg_lookup_val` function is to be utilized in the evaluation of said values. Or alternatively, a nominated operand extension can be used in accordance to the defined encoder's reference table.
 
 > [!NOTE]
 > Operations with registers should _always_ be done with the `registers` enum.
 > The raw value representation of registers should only be used as the final
-> step of encoding as helper functions included in the registers library is
-> unable to be applied towards numeric values. All numerically represented
-> registers can be converted from the enumerated form using the `reg_lookup_val`
-> function.
+> step of encoding.
 
 ### Common pitfalls
 
 Despite the `reg` and `rm` values being represented as `uint8_t`s, the actual
-data size is still a bit field consisting of 3 bits, in adherence to the Intel
-ModR/M byte's inherent structure. Attempts to directly assign a `registers` enum
-is unsupported and may result in overflow into the following members as an
+data size is _still a bit field consisting of 3 bits_, in adherence to the Intel
+ModR/M byte's structure. Attempts to directly assign a `registers` enum is
+unsupported and may result in overflow into the following members as an
 enumerated value is typically 1 byte wide.
 
 It is also **strongly recommended** that the `clang` or `gcc` compilers are used
