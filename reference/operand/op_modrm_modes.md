@@ -2,40 +2,32 @@
 
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
-An enum reflecting Intel's various mode selectors for the ModR/M byte. Due to
-the `rm` field of the ModR/M byte being variable in type; the mode of the ModR/M
-indicates to the CPU/decoder on how to interpret the 3 lower bits of the ModR/M
-byte as well as if any displacement values are included in the encoding of this
-instruction. Always consult the official Intel documentation for more
-information.
+`op_modrm_modes` is an enum that reflects the available modes associated with
+the ModR/M byte.
 
-> [!NOTE]
-> All values of this enum type is **not** padded with extra bits in adherence
-> with the 2, 3, 3 structure of the ModR/M byte itself! Please consult the below
-> implementation notes for more information regarding usage of the enum.
+Due to the `rm` field of the ModR/M byte being able to depict _either_ a
+register value or memory assignment among other data types; The mode field of
+the ModR/M byte indicates to the machine on how to interpret the 3 lower bits of
+the ModR/M byte.
 
-### Synopsis
+### Usage
 
-```c
-#include <operand.h>
+The `op_modrm_modes` enum is most commonly depicted in Jas as part of the `mod`
+member of the `op_modrm_t` structure that represents the standard Intel ModR/M
+memory reference byte. The mode of the ModR/M byte is typically deduced
+automatically by an associated helper function implemented as part of the
+library, namely, the `op_modrm_mode` function.
 
-enum op_modrm_modes {
-  OP_MODRM_MODE_INDIRECT = 0,
-  OP_MODRM_MODE_DISP8 = 1,
-  OP_MODRM_MODE_DISP32 = 2,
-  OP_MODRM_MODE_REG = 3,
-};
-```
+> [!TIP]
+> As each enum is assigned to as the _raw_ value of the ModR/M byte's mode
+> selector, the raw value of the actual ModR/M mode may be obtained through
+> casting the enum value directly over to an integer type.
 
-### Implementation notes
-
-Where it is required to append a ModR/M mode *directly* to a byte value,
-`op_modrm_modes` should not be directly assigned to the value, but rather should
-be upwards bitwise shifted 6 places to ensure alignment with the ModR/M
-structure. However, when `op_modrm_modes` is used with the `op_modrm_t` type,
-the `mod` value may be directly assigned to a member of `op_modrm_modes`.
+As mentioned in the `op_modrm_t` documentation file, the `mod` member is packed
+without padding as it allows the byte to be casted into a single byte output.
 
 ### See also
 
+- [`op_modrm_mode`](/reference/operand/op_modrm_mode/)
 - [`op_modrm_t`](/reference/operand/op_modrm_t.md)
 - [ModR/M Byte - Wikipedia](https://en.wikipedia.org/wiki/ModR/M)
