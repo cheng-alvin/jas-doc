@@ -2,11 +2,10 @@
 
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
-Function for automatically applying REX prefixes based off an instruction's
-operands' requirements. The function reads the requirements listed by the
-provided instruction and applies a corresponding REX prefix. For more
-information regarding the general usage of Intel's REX prefix encodings,
-official Intel develop manuals and endorsed resources should be referred to.
+`rex_apply`, as the name suggests, automatically applies the REX prefixes based
+off an instruction's operand requirements. The function infers the requirements
+listed by the provided instruction and applies a corresponding register
+extension prefix in the listed return value as a `rex_t`.
 
 ### Synopsis
 
@@ -23,24 +22,22 @@ rex_t rex_apply(instruction_t *input);
 
 > [!TIP]
 > Due to similarities with the `enc_serialized_instr_t` type, the value byte
-> returned from `rex_apply` can be applied directly to the serialized
-> instruction by assigning it to the `rex` property, without needing type
-> conversion or casting since they are of equivalent type. See the `rex_t`
-> documentation for more information regarding the type.
+> returned from `rex_apply` can be applied _directly_ to the serialized
+> instruction by assigning it to the `rex` property.
 
 If no REX prefix is required to encode the instruction, the `REX_DEFAULT`
 constant will be returned. A condition can be used to check whether the REX byte
-should be written as part of the final encoding. If using the default Jas
-encoder `enc_serialized_instr_t`, the `enc_deserialize` function automatically
-filters for invalid REX prefixes.
+should be written as part of the final encoding by checking for said
+`REX_DEFAULT` value.
 
 ### Error handling
 
 Due to `rex_apply`'s dependence upon `instr_get_tab`, an error may occur where
-an instruction encoder reference table was not found or has'nt been included.
-Data accuracy of instruction encoder tables may also give misleading outcomes.
-Regardless of success of the intended operations, `rex_apply` returns
-`REX_DEFAULT` by default, even if no operation has been completed.
+an instruction encoder reference table was not found or hasn't been included.
+
+`rex_apply` returns `REX_DEFAULT` by default, even if no operation has been
+completed. Additional diagnostic information is provided via the associated
+`err` function callback channel.
 
 ### See also
 
