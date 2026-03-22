@@ -3,29 +3,37 @@
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
 Enum representing the registers of the Intel x86 instruction set, including all
-general purpose registers of 8, 16, 32, and 64 bit data widths. However, this
-enum is exclusive of niche, special-use registers in Intel instruction set
-extensions such as AVX, hence, registers such as `xmm1` or `ymm2` is not
-supported in this enum.
-
-### Synopsis
-
-```c
-#include <register.h>
-enum registers;
-```
+general purpose registers of varying sizes, ranging from 8, 16, 32, to 64 bit
+data widths.
 
 ### Special values
 
-The `REG_NULL` value has been manually set to `0`, and typically is used in
-functions to manipulate register values indicative of an error or as a
-placeholder value and *should not* be considered a register.
+The `REG_NULL` value has been manually set to `0`, and is used in functions
+reflective of an error with the return of a register, or as a placeholder value
+when no other value is present.
 
 > [!NOTE]
-> Values of `registers` is not correspondent to the *actual* encoded values as
-> seen in the ModR/M, SIB and opcode appended values, rather actual register
-> values used in encoding should be obtained via the lookup table function of
+> Values of `registers` is not reflective of the _actual_ encoded values as seen
+> in the ModR/M, SIB and opcode appended values. Rather, actual register values
+> used in encoding should be obtained via the lookup table function of
 > `reg_lookup_val` instead.
+
+However, this enum is exclusive of special-use registers in the Intel
+instruction set extensions such as AVX. Special registers associated with vector
+instructions such as 128 bit wide `xmm` or `ymm` registers are **not** included
+as part of the `registers` enum.
+
+### Register helper macros
+
+The `registers` enum can be passed into the `op_acc` macro to determine whether
+the register is considered an accumulator register; that is, if the register is
+considered `ax`, `eax` or `rax` etc.
+
+> [!WARNING]
+> Size checkers associated with the operand module may be unable to test for the
+> size of `registers` enum values. Functions such as the `op_sizeof` function
+> and size macros such as `op_byte`, `op_dword` also purely _operated based off
+> `operands` enums_
 
 ### See also
 
