@@ -14,15 +14,16 @@ in later stages of assembly.
 ### Argument specifications
 
 Arguments in the instruction serialized structure can be categorized into:
-_prefix_, _opcode_, _memory definition_ and _immediate/displacement values_
-along with its corresponding metadata associated with a primary property as
-listed above.
+_prefix_, _opcode_, _memory definition_ and _immediate/displacement values_ as
+well as the _miscellaneous section_. Each argument's description and its
+corresponding metadata associated are depicted as below:
 
 #### Prefix
 
 - `prefixes` - A buffer of a variable size that contains the prefixes applicable
   for the instruction.
-- `rex` - Contains and single byte representing the REX prefix byte.
+- `rex` - Contains and single byte representing the REX prefix byte, where
+  applicable.
 
 > [!NOTE]
 > The `rex` prefix member should be set to `REX_DEFAULT` by default to indicate
@@ -79,6 +80,23 @@ this isn't usually checked in the serialization process.
 > This includes _both_ little and big endian processors. Misleading declarations
 > may result in an invalid value when converted to the other endian as it is
 > assumed to be defined as _big endian_.
+
+### Miscellaneous
+
+- `encoded_size` - Member representing the size of the encoded instruction that
+  is derived from this serialized instruction, represented in the total number
+  of bytes.
+
+The encoded size of the serialized instruction can also be calculated manually
+by obtaining a sum of the size-associated attributes such as `imm_size` or
+`disp_size`. However, the usage of the mentioned value prevents the need for
+additional redundant summing of instruction size.
+
+> [!NOTE]
+> The `encoded_size` struct member should be updated _manually_ upon the change
+> of another member of the `enc_serialized_instr` structure; as there is no
+> native C99 feature that allows the `encoded_size` variable to be tied with the
+> actual size represented by the structure.
 
 ### Why `enc_serialized_instr`?
 
