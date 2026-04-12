@@ -1,39 +1,36 @@
-## `op_assert_types`
+## `op_assert_descriptor`
 
 **Author(s):** [Alvin Cheng](https://github.com/cheng-alvin/)
 
-Utility function for checking and confirming that the types of the input operand
-array matches an array of expected operand types. `op_assert_types` returns a
-boolean value corresponding to whether if the provided array of operand structs
-matches the operand types array provided.
+Function for providing confirmation that the validity of an operand is met
+against a set of standards as set by the expected operand descriptors.
+`op_assert_descriptor` enforces the operand's type and the `expected` operand
+descriptor's expected type.
 
-`op_assert_types` is typically used for the validation of user-provided operands
-against a set of expected operands as part of the `instr_encode_table` struct's
-operand descriptor types.
+> [!TIP]
+> `op_assert_types` is tightly integrated with the `op_descriptor_t` used in conjunction as seen
+> in the `instr_encode_tab` structure, supporting for error checking for encoding.
 
 ### Synopsis
 
 ```c
 #include <operand.h>
-bool op_assert_types(operand_t *in, enum operands *ex, size_t sz);
+bool op_assert_descriptor(operand_t in, op_descriptor_t expected);
 ```
 
 ### Argument specifications
 
 - `in` - The input operand array for the checking to be completed against.
-- `ex` - An array of expected operand data types which `in` should match to.
-- `sz` - The expected size of both arrays in the number of operands.
+- `expected` - An operand descriptor to perform assertion against `in`.
 
-`op_assert_types` returns a `true` boolean value if the operand types array `ex`
-is equivalent with the types of the operands in `in`, conversely, if operands do
-not match, `false` is to be returned.
+`op_assert_descriptor` returns a boolean value indicative of whether the assertion is successful.
 
-> [!NOTE]
-> As mentioned above, the `op_assert_types` function is specifically targeted
-> towards the validation of operands against instruction encoder reference
-> tables, the function bases its judgement of operands through the `ex` value.
+A `true` boolean value is returned if the requirements
+expressed by operand descriptors in `expected` are reflected as per
+`in`. Conversely, if the conditions are not met, `false` is to be returned, prompting appropriate error reporting measures.
 
 ### See also
 
 - [`operands`](/reference/operand/operands.md)
 - [`operand_t`](/reference/operand/operand_t.md)
+- [`op_descriptor_t`]()
