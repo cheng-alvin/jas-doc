@@ -45,12 +45,14 @@ If an anticipated data size can be deduced through another source of truth, the
 allocation-efficient way. Rather than reallocating data after each write
 instance, the caller may `capacity` as the anticipated data size _in advance_.
 
-To prevent memory overflow runtime errors, a fallback case has been set in `buf_write` which automatically allocates an additional chunk where the `len` exceeds the predicted `capacity`.
+To prevent memory overflow runtime errors, a fallback case has been set in
+`buf_write` which automatically allocates an additional chunk where the `len`
+exceeds the predicted `capacity`.
 
 > [!WARNING]
 > If `capacity` is set to >0, the buffer is assumed to be managed manually _by
-> the caller_. The buffer module functions **does not** oversee the
-> allocation and reallocation of `data` in that case.
+> the caller_. The buffer module functions **does not** oversee the allocation
+> and reallocation of `data` in that case.
 
 ### See also
 
