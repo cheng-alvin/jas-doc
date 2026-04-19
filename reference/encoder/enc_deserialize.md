@@ -8,7 +8,7 @@ considered _deserialization_. The process opposes _serialization_ that encodes a
 raw instruction generic input into a serialized struct. See
 `enc_serialized_instr_t` for more details.
 
-> [!TIP]
+> [!NOTE]
 > `enc_deserialize` should only be used as the _final_ step of assembly. Any
 > processing of encoded instructions such as label evaluation and symbol table
 > generation should always interact with the serialized instruction.
@@ -26,15 +26,19 @@ buffer_t enc_deserialize(enc_serialized_instr_t *in, buffer_t buf);
 - `buf` - Buffer in which the deserialized instructions should be appended to.
 
 The caller may choose to _either_ append the deserialized instruction onto the
-current `buffer_t` structure; _or_ deserialize the instruction onto a fresh
-buffer through passing the `BUF_NULL` constant as `buf`. The newly instantiated
-or reallocated `buffer_t` will be **returned**.
+current `buffer_t` structure or have a new buffer be created, as dictated upon
+whether a pre-existing `data` value in the buffer is set. `enc_deserialize` also
+respects `capacity` if the user wishes to pre-allocate data.
 
-> [!NOTE]
-> Contrary to the `buffer_t` functions which modifies buffer objects in place,
-> `enc_deserialize` provides the updated buffer as a **return value**. A return
-> value of `BUF_NULL` indicates an error during deserialization, monitor the
-> `err` function callback for diagnostic information.
+> [!TIP]
+> To improve encoding speeds, the buffer size can be preallocated through
+> leveraging the `capacity` field. A total buffer size can be evaluated by
+> obtaining a sum of every instruction's `encoded_size` value and allocating the
+> nominated amount onto the buffer's heap memory.
+
+Said method of deserialization reduces additional heap reallocations made
+throughout a buffer's lifetime, allowing for a one-off allocation in lieu of
+reallocation calls after each append.
 
 ### See also
 
